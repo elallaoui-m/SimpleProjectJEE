@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public static final String VUE_FORM         = "/WEB-INF/Login.jsp";
+    public static final String VUE_FORM         = "Login.jsp";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -36,7 +36,7 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+	 System.out.println(request.getParameter("email")); 	
 	}
 
 }
