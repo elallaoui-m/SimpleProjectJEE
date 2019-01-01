@@ -1,4 +1,4 @@
-
+package controlServlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,17 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class LoginS
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/LoginS")
+public class LoginS extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public static final String VUE_FORM         = "Login.jsp";
+	public static final String VUE_FORM = "/Login.jsp";
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public LoginS() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +28,9 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		 this.getServletContext().getRequestDispatcher( VUE_FORM ).forward( request, response );
+		System.out.println(request.getParameter("pass"));
+		//this.getServletContext().getRequestDispatcher( VUE_FORM ).forward( request, response );
+		response.getWriter().append("<a href='"+"Login.jsp"+"'>Go Back</a>");
 	}
 
 	/**
@@ -36,7 +38,7 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	 System.out.println(request.getParameter("pass")); 	
+		doGet(request, response);
 	}
 
 }
