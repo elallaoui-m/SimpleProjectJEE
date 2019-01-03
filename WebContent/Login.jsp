@@ -61,6 +61,28 @@
 						<fmt:message key = "message.loginBtn"/>
 						</button>
 					</div>
+					
+					<c:choose>
+						  <c:when test="${not empty requestScope.correct && requestScope.correct=='0'}">
+							<div class='container-login100-form-btn p-t-25  text-center'>
+								<div class='alert alert-danger' role='alert'>
+		  						 <fmt:message key = "message.error"/>
+								</div>
+	    					</div>
+						  </c:when>
+						  
+						  <c:when test="${not empty param.disco && param.disco==1}">
+							<div class='container-login100-form-btn p-t-25  text-center'>
+								<div class="alert alert-success" role="alert">
+  									<fmt:message key = "message.disc"/>
+								</div>
+	    					</div>
+						  </c:when>
+
+						  <c:otherwise>
+						    
+						  </c:otherwise>
+					</c:choose>
 
 					<div class="text-center w-full p-t-42 p-b-22 formLogin__separator">
 						<span class="txt1">
