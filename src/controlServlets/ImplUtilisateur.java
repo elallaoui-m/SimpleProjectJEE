@@ -23,12 +23,9 @@ public class ImplUtilisateur implements  DAOUtilisateur{
 		//EntityTransaction tx;
 	@Override
 	public void CreateUtilis(Utilisateur util) {
-		
 		em.getTransaction().begin();
 		em.persist(util);
 		em.getTransaction().commit();
-		
-		
 	}
 
 	
