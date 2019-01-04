@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
       <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
+
+
+
+
+   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html >
@@ -21,6 +26,8 @@
 	<link rel="stylesheet" type="text/css" href="inc/css/util.css">
 	<link rel="stylesheet" type="text/css" href="inc/css/main.css">
 <!--===============================================================================================-->
+<meta name="google-signin-client_id" content="922252162446-9djl5kksq5beha2m35a0aoo5vshj398e.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 </head>
 <body>
 	 <fmt:setLocale value = "en"/>
@@ -71,7 +78,7 @@
 	    					</div>
 						  </c:when>
 						  
-						  <c:when test="${not empty param.disco && param.disco==1}">
+						  <c:when test="${not empty param.logout && param.logout==1}">
 							<div class='container-login100-form-btn p-t-25  text-center'>
 								<div class="alert alert-success" role="alert">
   									<fmt:message key = "message.disc"/>
@@ -95,10 +102,12 @@
 						Facebook
 					</a>
 
-					<a href="#" class="btn-google m-b-10">
+					<!-- <a href="#" class="btn-google m-b-10" data-onsuccess="onSignIn">
 						<img src="inc/images/icons/icon-google.png" alt="GOOGLE">
 						Google
-					</a>
+					</a> -->
+					
+					<div class="g-signin2" data-onsuccess="onSignIn"></div>
 
 					<div class="text-center w-full p-t-115">
 						<span class="txt1">
@@ -115,14 +124,34 @@
 	</div>
 	
 	
-
+<!-- <a href="#" onclick="signOut();">Sign out</a> -->
 	
 <!--===============================================================================================-->	
 	<script src="inc/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	
 <!--===============================================================================================-->
+	<script type="text/javascript" src='inc/vendor/jquery/jquery-3.2.1.min.js'></script>
 	<script src="inc/js/main.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script src="inc/js/google.js" type="text/javascript"></script>
+		
+	<c:if test="${not empty param.logout && param.logout=='1'}">
+	
+	<script type="text/javascript">
+	$( window ).on("load",function() {
+		
+		gapi.auth2.init({
+			  client_id: '922252162446-9djl5kksq5beha2m35a0aoo5vshj398e.apps.googleusercontent.com'
+		})
+	  	var auth2 = gapi.auth2.getAuthInstance();
+	  	auth2.signOut();
+	  	auth2.disconnect();
+	  	//window.location.href= 'Login.jsp';
+	});
+	</script>
+	</c:if>
+
 
 </body>
 </html>

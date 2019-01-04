@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginS extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String VUE_FORM = "/Login.jsp";
+	
+	Utilisateur Us = new Utilisateur();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -25,9 +27,14 @@ public class LoginS extends HttpServlet {
     
     boolean checkInfo(String user, String pass)
     {
-    	
-    	if(user.equals("admin@ad.com") && pass.equals("admin"))
+    	ImplUtilisateur imp = new ImplUtilisateur();
+    	Us = imp.Authentifier(user, pass);
+    	if(Us != null)
+    	{
+    		
     		return true;
+    	}
+    	
 		return false;
     	
     }
@@ -41,8 +48,19 @@ public class LoginS extends HttpServlet {
 		String user = request.getParameter("email");
 		if(checkInfo(user,pass))
 		{
-			response.getWriter().append("<a href='"+"Login.jsp?disco=1"+"'>Go Back</a>");
-			request.getSession().setAttribute("user", user);
+			request.getSession().setAttribute("user", Us);
+			response.getWriter().append("<a href='"+"Login.jsp?logout=1"+"'>Go Backas</a>");
+			/*response.getWriter().append("<a href=\"#\" onclick=\"signOut();\">Sign out</a>\r\n" + 
+					"<script>\r\n" + 
+					"  function signOut() {\r\n" + 
+					"    var auth2 = gapi.auth2.getAuthInstance();\r\n" + 
+					"    auth2.signOut().then(function () {\r\n" + 
+					"      console.log('User signed out.');\r\n" + 
+					"    });\r\n" + 
+					"  }\r\n" + 
+					"</script>");*/
+
+			
 		}
 			
 		else 
