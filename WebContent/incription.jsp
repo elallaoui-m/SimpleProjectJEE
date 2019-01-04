@@ -69,15 +69,7 @@
                                 </span>
                                 </div>
                         <p class="para-email m-b-20">Use your adresse email </p>
-                        <div class="wrap-input100 validate-input m-b-25" data-validate = "">
-                            <input class="input100 input1000" type="tel" name="phonenumber" placeholder="exemple: 0651888354">
-                                <span class="focus-input100">
-                                    <label for="fullname" class="float-lable">Phone number</label>
-                                </span>
-                                
-                                
-                                
-                                </div>
+                        
                         <div class="wrap-input100 validate-input m-b-20" data-validate = "Valid email is required: ex@gmail.com">
                             <select class="input100" >
                               
