@@ -22,6 +22,7 @@
 		</attributes>
 	</classpathentry>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
@@ -30,5 +31,8 @@
 =======
 	<classpathentry kind="lib" path="C:/Users/Mehdi/Downloads/gson-2.8.5.jar"/>
 >>>>>>> 775fa2098a9b1893535485ed2682f1177415e0c1
+=======
+	<classpathentry kind="lib" path="C:/Users/Mehdi/Downloads/gson-2.8.5.jar"/>
+>>>>>>> e022360432450cee5040cf2252e1655626128fb1
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
