@@ -152,7 +152,7 @@
                                 Are you a member?
                             </span>
                             
-                            <a class="txt1 bo1 hov1" href="#">
+                            <a class="txt1 bo1 hov1" href="Login.jsp">
                                 Sign in now
                             </a>
                         </div>
