@@ -49,7 +49,8 @@ public class LoginS extends HttpServlet {
 		if(checkInfo(user,pass))
 		{
 			request.getSession().setAttribute("user", Us);
-			response.getWriter().append("<a href='"+"Login.jsp?logout=1"+"'>Go Backas</a>");
+			request.getRequestDispatcher("editProfile.jsp").forward(request, response);
+			//response.getWriter().append("<a href='"+"Login.jsp?logout=1"+"'>Go Backas</a>");
 			/*response.getWriter().append("<a href=\"#\" onclick=\"signOut();\">Sign out</a>\r\n" + 
 					"<script>\r\n" + 
 					"  function signOut() {\r\n" + 
