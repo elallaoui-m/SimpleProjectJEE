@@ -96,6 +96,21 @@ public class ImplUtilisateur implements  DAOUtilisateur{
 		return query.getResultList();
 	}
 	
+	public Utilisateur searchebyEmail(String email)
+	{
+		
+		javax.persistence.Query query = em.createNativeQuery("select * from utilisateur where email = ?",Utilisateur.class);
+		query.setParameter(1,email);
+		List<Utilisateur> tab = query.getResultList();
+		if(tab.isEmpty() == false) {
+			//System.out.println(tab.get(0).getNom());
+			return tab.get(0);
+		}
+		else
+			return null;
+		
+	}
+	
 	
 
 	
