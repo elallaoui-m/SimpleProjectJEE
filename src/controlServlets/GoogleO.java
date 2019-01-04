@@ -34,7 +34,7 @@ public class GoogleO extends HttpServlet {
 		String email = request.getParameter("email");
 		user = implUser.searchebyEmail(email);
 		
-		if(user.equals(null))
+		if(!user.equals(null))
 		{
 			return;
 		}
