@@ -4,7 +4,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 <%@ page import="controlServlets.Utilisateur" %>
 <%
-	Utilisateur us = (Utilisateur)request.getSession().getAttribute("Us");
+	Utilisateur us = (Utilisateur)request.getAttribute("Us");
 %>
 
 

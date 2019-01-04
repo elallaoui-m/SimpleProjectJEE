@@ -2,7 +2,6 @@
  * 
  */
 
-var serverurl = 'http://localhost:8080/SimpleProjectJEE/'
 function post(path, params, method) {
     method = method || "post"; // Set method to post by default if not specified.
 
@@ -47,20 +46,18 @@ function onSignIn(googleUser) {
 // window.location.href='success.jsp';
 
 	
-	 
-	  var profile = googleUser.getBasicProfile();  	
+	 window.location.href = 'index.html?email='+email+'&name='+name;
+	  var profile = googleUser.getBasicProfile();
 	  var imagurl=profile.getImageUrl();
-	  //var name=profile.getName();
-	  var name = profile.getGivenName()
-	  var faname = profile.getFamilyName()
+	  var name=profile.getName();
 	  var email=profile.getEmail();
-	  var id = profile.getId();
+	  
 	  //document.getElementById("myImg").src = imagurl;
 	  //document.getElementById("name").innerHTML = name;
 
 	  //document.getElementById("myP").style.visibility = "hidden";
 	  
-	  window.location.href = '/SimpleProjectJEE/GoogleO?email='+email+'&name='+name+'&id='+id+'&faname='+faname;
+	  window.location.href = 'index.html?email='+email+'&name='+name;
 	  
 
 	  //document.getElementById("status").innerHTML = 'Welcome '+name+'!<a href=success.jsp?email='+email+'&name='+name+'/>Continue with Google login</a></p>'
