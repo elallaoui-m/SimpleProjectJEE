@@ -50,7 +50,7 @@ public class LoginS extends HttpServlet {
 		{
 			request.getSession().setAttribute("user",Us);
 			request.setAttribute("users",Us);
-			request.getRequestDispatcher("editProfile.jsp").forward(request, response);
+			//request.getRequestDispatcher("editProfile.jsp").forward(request, response);
 			//response.getWriter().append("<a href='"+"Login.jsp?logout=1"+"'>Go Backas</a>");
 			/*response.getWriter().append("<a href=\"#\" onclick=\"signOut();\">Sign out</a>\r\n" + 
 					"<script>\r\n" + 
