@@ -96,4 +96,24 @@ public class Commentaire implements Serializable {
 		this.utilisateur = utilisateur;
 	}
 
+	@Override
+	public String toString() {
+		return "Commentaire [idCommentaire=" + idCommentaire + ", comm=" + comm + ", dateComm=" + dateComm
+				+ ", upvotes=" + upvotes + ", blog=" + blog + ", utilisateur=" + utilisateur + "]";
+	}
+
+	public Commentaire(int idCommentaire, String comm, String dateComm, int upvotes, Blog blog,
+			Utilisateur utilisateur) {
+		super();
+		this.idCommentaire = idCommentaire;
+		this.comm = comm;
+		this.dateComm = dateComm;
+		this.upvotes = upvotes;
+		this.blog = blog;
+		this.utilisateur = utilisateur;
+	}
+	
+	
+	
+
 }

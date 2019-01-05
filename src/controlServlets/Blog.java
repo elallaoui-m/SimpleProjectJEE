@@ -23,6 +23,7 @@ public class Blog implements Serializable {
 	private String dateBlog;
 
 	private String description;
+	private String intro;
 	
 	private String titre;
 
@@ -106,5 +107,21 @@ public class Blog implements Serializable {
 
 		return commentaire;
 	}
+
+	@Override
+	public String toString() {
+		return "Blog [idBlog=" + idBlog + ", dateBlog=" + dateBlog + ", description=" + description + ", intro=" + intro
+				+ ", titre=" + titre + ", utilisateur=" + utilisateur + ", commentaires=" + commentaires + "]";
+	}
+
+	public String getIntro() {
+		return intro;
+	}
+
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
+	
+	
 
 }

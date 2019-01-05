@@ -58,7 +58,7 @@ public class ImpBlog implements DAOBlog{
 
 
 	@Override
-	public Blog FindBlog(int id) {
+	public  Blog FindBlog(int id) {
 		
 		return em.find(Blog.class, id);
 	}
