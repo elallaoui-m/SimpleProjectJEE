@@ -5,6 +5,7 @@
 		<class>controlServlets.Blog</class>
 		<class>controlServlets.Commentaire</class>
 		<class>controlServlets.Utilisateur</class>
+		<class>controlServlets.Like</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/blogdatabase"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
