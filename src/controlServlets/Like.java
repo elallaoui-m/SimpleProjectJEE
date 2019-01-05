@@ -3,11 +3,6 @@ package controlServlets;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
-/**
- * The persistent class for the likes database table.
- * 
- */
 @Entity
 @Table(name="likes")
 @NamedQuery(name="Like.findAll", query="SELECT l FROM Like l")
@@ -28,6 +23,13 @@ public class Like implements Serializable {
 	private int idEtudiant;
 
 	public Like() {
+	}
+	
+	public Like(int idBlog, int idCommentaire, int idEtudiant) {
+		//super();
+		this.idBlog = idBlog;
+		this.idCommentaire = idCommentaire;
+		this.idEtudiant = idEtudiant;
 	}
 
 	public int getIdLike() {
