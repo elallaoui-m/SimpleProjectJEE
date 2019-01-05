@@ -31,15 +31,18 @@ public class Utilisateur implements Serializable {
 	private String verify;
 	
 	private String motdepass;
+	
+	private String gender;
 
 	public Utilisateur() {
 	}
 
 	public Utilisateur(String dateN,String email,String nom,String prenom,
-			String type,String verify,String motdepass) 
+			String type,String verify,String motdepass, String gender) 
 	{
 	this.dateN = dateN;this.email = email;this.nom = nom;this.prenom = prenom;
 	this.type = type;this.verify = verify;this.motdepass = motdepass;
+	this.gender=gender;
 	}
 
 	public int getIdEtudiant() {
@@ -105,5 +108,22 @@ public class Utilisateur implements Serializable {
 	public void setMotdepass(String motdepass) {
 		this.motdepass = motdepass;
 	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	@Override
+	public String toString() {
+		return "Utilisateur [idEtudiant=" + idEtudiant + ", dateN=" + dateN + ", email=" + email + ", nom=" + nom
+				+ ", prenom=" + prenom + ", type=" + type + ", verify=" + verify + ", motdepass=" + motdepass
+				+ ", gender=" + gender + "]";
+	}
+	
+	
 
 }

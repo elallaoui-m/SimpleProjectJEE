@@ -52,10 +52,32 @@ public class ImplUtilisateur implements  DAOUtilisateur{
  
 		Utilisateur util = em.find(Utilisateur.class, id);
 		em.getTransaction().begin();
+		
+		/*System.out.println(id);
+		System.out.println(util);
+		
+		System.out.println(utilis);*/
+		
+		if(!utilis.getNom().equals(null)  && !utilis.getNom().isEmpty())
 		util.setNom(utilis.getNom());
-		util.setPrenom(utilis.getPrenom());
-		util.setDateN(utilis.getDateN());
-		util.setMotdepass(utilis.getMotdepass());
+		
+		
+		if(!utilis.getPrenom().equals(null)  && !utilis.getPrenom().isEmpty())
+			util.setPrenom(utilis.getPrenom() );
+		
+		if(!utilis.getGender().equals(null)  && !utilis.getGender().isEmpty())
+			util.setGender(utilis.getGender());
+		
+		if(!utilis.getType().equals(null)  && !utilis.getType().isEmpty())
+			util.setType(utilis.getType());
+		
+		if(!utilis.getDateN().equals(null) && !utilis.getDateN().isEmpty())
+			util.setDateN(utilis.getDateN());
+		
+		if(!utilis.getMotdepass().equals(null)  && !utilis.getMotdepass().isEmpty())
+			util.setMotdepass(utilis.getMotdepass());
+
+		
 		em.getTransaction().commit();
 		
 	}
@@ -94,6 +116,21 @@ public class ImplUtilisateur implements  DAOUtilisateur{
 		
 		javax.persistence.Query query = em.createNativeQuery("select * from utilisateur ",Utilisateur.class);
 		return query.getResultList();
+	}
+	
+	public Utilisateur searchebyEmail(String email)
+	{
+		
+		javax.persistence.Query query = em.createNativeQuery("select * from utilisateur where email = ?",Utilisateur.class);
+		query.setParameter(1,email);
+		List<Utilisateur> tab = query.getResultList();
+		if(tab.isEmpty() == false) {
+			//System.out.println(tab.get(0).getNom());
+			return tab.get(0);
+		}
+		else
+			return null;
+		
 	}
 	
 	

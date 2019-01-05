@@ -2,11 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
-<%@ page import="controlServlets.Utilisateur" %>
-<%
-	Utilisateur us = (Utilisateur)request.getAttribute("Us");
-%>
 
+<%-- <jsp:useBean id="Myuser" class="controlServlets.Utilisateur"/>--%>
+
+<%@ page import="controlServlets.Utilisateur" %>
+<%Utilisateur Myuser =(Utilisateur) request.getAttribute("user"); %> 
 
 <!DOCTYPE html>
 <html>
@@ -41,7 +41,7 @@
             <div class="alert alert-info absolue center" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">Ã</span></button><span>Profile save with success</span></div>
         </div>
     </div>
-    <form>
+    <form methode='post' action='/EditProfileS'>
         <div class="form-row profile-row">
             <div class="col-md-4 relative">
                 <div class="avatar">
@@ -53,20 +53,20 @@
                 <hr>
                 <div class="form-row">
                     <div class="col-sm-12 col-md-6">
-                        <div class="form-group"><label>Firstname </label><input class="form-control" type="text" name="firstname" value=<%=us.getPrenom() %>></div>
+                        <div class="form-group"><label>Firstname </label><input class="form-control" type="text" name="firstname" value=<%=Myuser.getPrenom() %> ></div>
                     </div>
                     <div class="col-sm-12 col-md-6">
-                        <div class="form-group"><label>Lastname </label><input class="form-control" type="text" name="lastname" value=<%=us.getNom() %>></div>
+                        <div class="form-group"><label>Lastname </label><input class="form-control" type="text" name="lastname" value=<%=Myuser.getNom() %>></div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-sm-12 col-md-6 col-lg-12">
-                        <div class="form-group"><label>Date</label><input class="form-control" type="date" name="date" value=<%=us.getDateN() %>></div>
+                        <div class="form-group"><label>Date</label><input id="datefield" class="form-control" type="date" name="date" value=<%=Myuser.getDateN() %>></div>
                     </div>
-                </div><div class="form-group"><label>Email</label><input type="email" class="form-control" autocomplete="off" required name="email" value=<%=us.getEmail() %>/></div>
+                </div><%-- <div class="form-group"><label>Email</label><input type="email" class="form-control" autocomplete="off" required name="email" value=<%=Myuser.getEmail() %> /></div> --%>
                 <div class="form-row">
                     <div class="col-sm-12 col-md-6 col-lg-12">
-                        <div class="form-group"><label>Old Password </label><input class="form-control" type="password" name="password" autocomplete="off" required=""></div>
+                        <div class="form-group"><label>Old Password </label><input class="form-control" type="password" name="Oldpassword" autocomplete="off" required=""></div>
                     </div>
                 </div>
                 <div class="form-row">
@@ -80,15 +80,18 @@
                 <div class="form-row">
                     <div class="col-sm-12 col-md-6 col-lg-3 offset-lg-0">
                         <div class="form-group"><label>Type</label>
-                            <div class="dropdown"><button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" style="width:100px;height:40px;">Role</button>
-                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">user</a><a class="dropdown-item" role="presentation" href="#">admin</a></div>
+                            <div class="dropdown">
+                            <select class="form-control" name='role'>
+							    <option value="user">User</option>
+							    <option value="admin">Admin</option>
+							</select>
                             </div>
                         </div>
                     </div>
                 </div>
                 <hr>
                 <div class="form-row">
-                    <div class="col-md-12 content-right"><button class="btn btn-primary form-btn" type="submit">SAVE </button><button class="btn btn-danger form-btn" type="reset">CANCEL </button></div>
+                    <div class="col-md-12 content-right"><button class="btn btn-primary form-btn" type="submit">SAVE </button><button onClick="goBack()" class="btn btn-danger form-btn" type="reset">CANCEL </button></div>
                 </div>
             </div>
         </div>
@@ -97,6 +100,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/script.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>

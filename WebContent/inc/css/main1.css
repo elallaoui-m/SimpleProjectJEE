@@ -242,6 +242,11 @@ select{
 {
     width:28% !important;
 }
+
+.date-31
+{
+    width:48% !important;
+}
 .date-60
 {
     flex:1;

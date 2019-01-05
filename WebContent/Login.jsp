@@ -85,6 +85,15 @@
 								</div>
 	    					</div>
 						  </c:when>
+						  
+						 <c:when test="${not empty param.verify && param.verify=='flase'}">
+							<div class='container-login100-form-btn p-t-25  text-center'>
+								<div class="alert alert-success" role="warning">
+  									<fmt:message key = "message.verify"/>
+								</div>
+	    					</div>
+						  </c:when> 
+						 
 
 						  <c:otherwise>
 						    

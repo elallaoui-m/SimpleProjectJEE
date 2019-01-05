@@ -48,25 +48,21 @@ public class LoginS extends HttpServlet {
 		String user = request.getParameter("email");
 		if(checkInfo(user,pass))
 		{
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-			request.getSession().setAttribute("user",Us);
-			request.setAttribute("users",Us);
-			//request.getRequestDispatcher("editProfile.jsp").forward(request, response);
+			if(Us.getVerify().equals("No"))
+			{
+				request.getRequestDispatcher("Login.jsp?verify=false").forward(request, response);
+				
+			}
+			
+			request.getSession().setAttribute("email", user);
+			request.getSession().setAttribute("typeUser",Us.getType() );
+			//request.setAttribute("user", Us);
+			request.getSession().setAttribute("Myuser", Us);
+			request.getRequestDispatcher("Editincription.jsp").forward(request, response);
+			
+			
+			
 			//response.getWriter().append("<a href='"+"Login.jsp?logout=1"+"'>Go Backas</a>");
-=======
-			request.getSession().setAttribute("user", Us);
-			response.getWriter().append("<a href='"+"Login.jsp?logout=1"+"'>Go Backas</a>");
->>>>>>> parent of ae3f0f4... add
-=======
-			request.getSession().setAttribute("user", Us);
-			response.getWriter().append("<a href='"+"Login.jsp?logout=1"+"'>Go Backas</a>");
->>>>>>> parent of ae3f0f4... add
-=======
-			request.getSession().setAttribute("user", Us);
-			response.getWriter().append("<a href='"+"Login.jsp?logout=1"+"'>Go Backas</a>");
->>>>>>> parent of ae3f0f4... add
 			/*response.getWriter().append("<a href=\"#\" onclick=\"signOut();\">Sign out</a>\r\n" + 
 					"<script>\r\n" + 
 					"  function signOut() {\r\n" + 

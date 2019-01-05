@@ -10,8 +10,9 @@
                            var password_regex2=/([0-9])/;
                            var password_regex4=/([A-Z])/;
                            var password_regex3=/([!,%,&,@,#,$,^,*,.,?,_,~])/;
-                            var pass=$("#password").val();
+                           var pass=$("#password").val();
                            var confirm=$("#confirm").val();
+                           
                            
                            if(pass.trim()!=0)
                            {
