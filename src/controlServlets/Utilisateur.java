@@ -11,6 +11,8 @@ public class Utilisateur implements Serializable {
 
 	@Id
 	@Column(name="id_etudiant")
+	@SequenceGenerator( name = "mySeq", sequenceName = "MY_SEQ", allocationSize = 1, initialValue = 1 )
+	@GeneratedValue(strategy=GenerationType.IDENTITY, generator="mySeq")
 	private int idEtudiant;
 
 	@Column(name="date_n")

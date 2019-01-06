@@ -2,8 +2,15 @@
     pageEncoding="UTF-8"%>
       <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
+    <%@ page errorPage="ifError.jsp" %>
+    <%@page import="java.util.Map" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ page errorPage="ifError.jsp" %>
+
+<%
+	Map<String,String> errorlst = (Map<String,String>)request.getAttribute("errorList");
+%>
+
+
 <html>
     <head>
         <title>sign up</title>
@@ -42,10 +49,35 @@
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-                    <form class="login100-form validate-form">
+                    <form class="login100-form validate-form" methode='post' action="<c:url value = "/signupS"/>">
                         <span class="login100-form-title p-b-55">
                             Registre
                         </span>
+                        
+                        <c:choose>
+						  <c:when test="${not empty requestScope.error && requestScope.error=='true'}">
+							<div class='container-login100-form-btn p-t-25  text-center'>
+								<div class='alert alert-danger' role='alert'>
+		  						 <%
+		  						for (Map.Entry<String, String> entry : errorlst.entrySet()) {
+		  						    out.println(entry.getValue().toString());
+		  						}
+		  						 %>
+								</div>
+	    					</div>
+						  </c:when>
+						  <c:when test="${not empty requestScope.error && requestScope.error=='false'}">
+							<div class='container-login100-form-btn p-t-25  text-center'>
+								<div class="alert alert-success" role="alert">
+  									Registration completed with success
+  									<a href="Login.jsp" class="btn btn-lg btn-primary" role="button" aria-pressed="true">Go Home</a>
+								</div>
+	    					</div>
+						  </c:when>
+						  <c:otherwise>
+						    
+						  </c:otherwise>
+					</c:choose>
                         <div class="wrap-input-inline validate-input m-b-20" data-validate = "">
                             <input class="input100 input1000" type="text" name="first-name" placeholder=" ">
                                 <span class="focus-input100 ">
@@ -71,7 +103,7 @@
                         <p class="para-email m-b-20">Use your adresse email </p>
                         
                         <div class="wrap-input100 validate-input m-b-20" data-validate = "Valid email is required: ex@gmail.com">
-                            <select class="input100" >
+                            <select class="input100" name='gender' >
                               
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
@@ -109,6 +141,9 @@
                         <div class="div-error m-b-10">
                             <p class="invalid" id="invalid-date"></p>
                         </div>
+                        
+                        
+                        
                         
                         <div class="flex-password m-b-10">
                         <div class="wrap-input100  m-r-8" data-validate = "Password is required">

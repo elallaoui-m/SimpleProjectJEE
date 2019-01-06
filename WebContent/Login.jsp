@@ -123,7 +123,7 @@
 								<fmt:message key = "message.notMember"/>
 						</span>
 
-						<a class="txt1 bo1 hov1" href="#">
+						<a class="txt1 bo1 hov1" href="inscription.jsp">
 						<fmt:message key = "message.notMemberIncr"/>					
 						</a>
 					</div>

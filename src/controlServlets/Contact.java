@@ -59,4 +59,18 @@ public class Contact implements Serializable {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return "Contact [idMsg=" + idMsg + ", email=" + email + ", msg=" + msg + ", name=" + name + "]";
+	}
+
+	public Contact(String email, String msg, String name) {
+		super();
+		this.email = email;
+		this.msg = msg;
+		this.name = name;
+	}
+
+	
+	
 }

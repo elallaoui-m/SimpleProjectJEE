@@ -34,9 +34,9 @@
 		<div class="notfound">
 			<div class="notfound-404">
 				<h1>Oops!</h1>
-				<h2><%=exception.getMessage()%></h2>
+				<h2>Error!</h2>
 			</div>
-			<a href="#">Go TO Homepage</a>
+			<a href="Login.jsp">Go TO Homepage</a>
 		</div>
 	</div>
 
