@@ -102,7 +102,7 @@ public class Commentaire implements Serializable {
 				+ ", upvotes=" + upvotes + ", blog=" + blog + ", utilisateur=" + utilisateur + "]";
 	}
 
-	public Commentaire(int idCommentaire, String comm, String dateComm, int upvotes, Blog blog,
+	public Commentaire(int idCommentaire, String comm, int upvotes, String dateComm, Blog blog,
 			Utilisateur utilisateur) {
 		super();
 		this.idCommentaire = idCommentaire;

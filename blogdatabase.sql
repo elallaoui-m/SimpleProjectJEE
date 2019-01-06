@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2019 at 12:50 PM
+-- Generation Time: Jan 06, 2019 at 01:16 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `blogs`
+-- Database: `blogdatabase`
 --
 
 -- --------------------------------------------------------
@@ -55,6 +55,7 @@ INSERT INTO `blog` (`id_blog`, `date_blog`, `description`, `id_etudiant`, `titre
 CREATE TABLE `commentaire` (
   `id_commentaire` int(11) NOT NULL,
   `comm` text NOT NULL,
+  `upvotes` int(11) NOT NULL DEFAULT '0',
   `date_comm` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_blog` int(11) DEFAULT NULL,
   `id_etudiant` int(11) DEFAULT NULL
@@ -64,8 +65,21 @@ CREATE TABLE `commentaire` (
 -- Dumping data for table `commentaire`
 --
 
-INSERT INTO `commentaire` (`id_commentaire`, `comm`, `date_comm`, `id_blog`, `id_etudiant`) VALUES
-(1, 'that\'s coool', '0000-00-00 00:00:00', 1, 4);
+INSERT INTO `commentaire` (`id_commentaire`, `comm`, `upvotes`, `date_comm`, `id_blog`, `id_etudiant`) VALUES
+(1, 'that\'s coool', 0, '0000-00-00 00:00:00', 1, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id_msg` int(11) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `email` varchar(50) NOT NULL,
+  `msg` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -135,6 +149,12 @@ ALTER TABLE `commentaire`
   ADD KEY `id_etudiant` (`id_etudiant`);
 
 --
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id_msg`);
+
+--
 -- Indexes for table `likes`
 --
 ALTER TABLE `likes`
@@ -166,6 +186,12 @@ ALTER TABLE `blog`
 --
 ALTER TABLE `commentaire`
   MODIFY `id_commentaire` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id_msg` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `likes`
