@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 <%@ page import="java.util.*" %>
-<%@ page import="controlServlets.ImpBlog,controlServlets.Blog,java.util.List" %>
+<%@ page import="controlServlets.ImpBlog,controlServlets.Utilisateur,controlServlets.Blog,java.util.List" %>
 <%@ page errorPage="ifError.jsp" %>
 <%
 	List<Blog> lst = (List<Blog>) request.getAttribute("lstBlog");
@@ -28,6 +28,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
     <link rel="stylesheet" href="assets/css/styles.min2.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    
+    
+    
 </head>
 
 <body>
@@ -89,6 +93,21 @@
             <div class="card-footer text-muted">
               Posted on <%= b.getDateBlog() %>
               <a><%=b.getUtilisateur().getNom() %></a>
+              
+              <%
+              	if(b.getUtilisateur().getIdEtudiant() == ((Utilisateur)(request.getSession().getAttribute("Myuser"))).getIdEtudiant()  )
+              	{
+              		
+              	
+              %>
+              <a href="Editincription.jsp">
+                <i class="fa fa-edit"></i>
+              Edit </a><a href="Editincription.jsp">
+              <i class="fa fa-trash"></i>
+              Delete </a>
+              
+              <% }%>
+              
             </div>
           </div>
 
