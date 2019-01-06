@@ -58,6 +58,7 @@ public class LoginS extends HttpServlet {
 			request.getSession().setAttribute("typeUser",Us.getType() );
 			//request.setAttribute("user", Us);
 			request.getSession().setAttribute("Myuser", Us);
+			
 			request.getRequestDispatcher("/InvocBlogS").forward(request, response);
 			
 			

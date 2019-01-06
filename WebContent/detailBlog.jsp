@@ -3,11 +3,12 @@
       <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
     
-<%@page import="controlServlets.Blog,controlServlets.Commentaire,java.util.List" %>
+<%@page import="controlServlets.Blog,controlServlets.Commentaire,java.util.List,controlServlets.Utilisateur" %>
 
 <%
     Blog myBlog = (Blog)request.getAttribute("blog");
 	List<Commentaire> ListC = (List<Commentaire>) request.getAttribute("comments");
+	int idblogbyrequest =(int)request.getSession().getAttribute("id");
 %>
     
 
@@ -110,9 +111,19 @@
                                                     <button class="btn btn-sm btn-default">
                                                         <span class="glyphicon glyphicon-thumbs-up"></span> Upvote
                                                     </button>
-                                                    <%=c.getUpvotes() %> likes
+                                                    <%=c.getUpvotes() %> likes<br>
+													
+													<% if(c.getUtilisateur().getIdEtudiant()==(idblogbyrequest)){
+														out.println("<a href='/SimpleProjectJEE/HideComment?idcomment="+c.getIdCommentaire()+"'>Delete Comment</a>");
+														}
+														%>
+													
+													
                                                     
+                                                    	
                                                     </p>
+                                                     
+                                                    
                                                 </div>
                                             </div>
                                        	 </div>
@@ -210,6 +221,11 @@
                                                                         <a href="Editincription.jsp">
                                                                             <i class="glyphicon glyphicon-user"></i>
                                                                             Account Settings </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="Editincription.jsp">
+                                                                            <i class="glyphicon glyphicon-log-out"></i>
+                                                                            Disconnect </a>
                                                                     </li>
                                                                     <!-- <li>
                                                                         <a href="#" target="_blank">

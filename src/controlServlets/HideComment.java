@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class InvocBlogS
+ * Servlet implementation class HideComment
  */
-@WebServlet("/InvocBlogS")
-public class InvocBlogS extends HttpServlet {
+@WebServlet("/HideComment")
+public class HideComment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InvocBlogS() {
+    public HideComment() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,17 +26,11 @@ public class InvocBlogS extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Utilisateur us = (Utilisateur) request.getSession().getAttribute("Myuser");
-		System.out.println(us);
-		int idblog;
-		if( request.getAttribute("idblog") == null)
-		idblog = 1;
-		else idblog=Integer.parseInt(request.getParameter("idblog"));
-		
-		request.getSession().setAttribute("id", us.getIdEtudiant());
-		request.getRequestDispatcher("/BlogDetailsS?idblog="+idblog).forward(request, response);
-		
+		// TODO Auto-generated method stub
+		String s = request.getParameter("idcomment");
+		ImplCommentaire imC =  new ImplCommentaire();
+		imC.DeleteComment(Integer.parseInt(s));
+		request.getRequestDispatcher("/InvocBlogS").forward(request, response);
 	}
 
 	/**

@@ -69,5 +69,14 @@ public class ImpBlog implements DAOBlog{
 		query.setParameter(1, "%"+words+"%");
 		return query.getResultList();
 	}
+	
+	public int getBlogsNumber() {
+		 em.getTransaction().begin();
+		 javax.persistence.Query query = em.createNativeQuery("select count(*) from blog");
+		 
+		 //query.executeUpdate();
+		 int a = Integer.parseInt(query.getResultList().get(0).toString());
+		 return a;
+	}
 
 }

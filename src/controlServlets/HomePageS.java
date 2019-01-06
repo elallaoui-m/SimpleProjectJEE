@@ -1,6 +1,8 @@
 package controlServlets;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class InvocBlogS
+ * Servlet implementation class HomePageS
  */
-@WebServlet("/InvocBlogS")
-public class InvocBlogS extends HttpServlet {
+@WebServlet("/HomePageS")
+public class HomePageS extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InvocBlogS() {
+    public HomePageS() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,17 +28,20 @@ public class InvocBlogS extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
 		Utilisateur us = (Utilisateur) request.getSession().getAttribute("Myuser");
-		System.out.println(us);
-		int idblog;
-		if( request.getAttribute("idblog") == null)
-		idblog = 1;
-		else idblog=Integer.parseInt(request.getParameter("idblog"));
-		
-		request.getSession().setAttribute("id", us.getIdEtudiant());
-		request.getRequestDispatcher("/BlogDetailsS?idblog="+idblog).forward(request, response);
-		
+		if(us == null || us.getEmail()==null)
+		{
+			response.sendRedirect("error.html");
+			System.out.println("error");
+		}
+		else
+		{
+			ImpBlog impB =  new ImpBlog();
+			List<Blog> lst = impB.ShowAllBlog();
+			request.setAttribute("lstBlog", lst);
+			request.getRequestDispatcher("blogs.jsp").forward(request, response);
+		}
 	}
 
 	/**
