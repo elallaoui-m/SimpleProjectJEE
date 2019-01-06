@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2019 at 10:54 PM
--- Server version: 10.1.32-MariaDB
--- PHP Version: 7.2.5
+-- Generation Time: Jan 06, 2019 at 12:50 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `blogdatabase`
+-- Database: `blogs`
 --
 
 -- --------------------------------------------------------
@@ -30,18 +30,21 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `blog` (
   `id_blog` int(11) NOT NULL,
-  `date_blog` varchar(20) NOT NULL,
-  `description` varchar(150) NOT NULL,
+  `date_blog` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `description` text NOT NULL,
   `id_etudiant` int(11) DEFAULT NULL,
-  `titre` varchar(100) DEFAULT NULL
+  `titre` text,
+  `intro` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `blog`
 --
 
-INSERT INTO `blog` (`id_blog`, `date_blog`, `description`, `id_etudiant`, `titre`) VALUES
-(1, '12333', 'garrr', 4, 'garrarara');
+INSERT INTO `blog` (`id_blog`, `date_blog`, `description`, `id_etudiant`, `titre`, `intro`) VALUES
+(1, '0000-00-00 00:00:00', 'garrr', 4, 'garrarara', ''),
+(2, '2019-01-06 00:59:10', 'SAN FRANCISCO — A common belief among tech industry insiders is that Silicon Valley has dominated the internet because much of the worldwide network was designed and built by Americans.\r\n\r\nNow a growing number of those insiders are worried that proposed export restrictions could short-circuit the pre-eminence of American companies in the next big thing to hit their industry, artificial intelligence.\r\n\r\nIn November, the Commerce Department released a list of technologies, including artificial intelligence, that are under consideration for new export rules because of their importance to national security.\r\n\r\nTechnology experts worry that blocking the export of A.I. to other countries, or tying it up in red tape, will help A.I. industries flourish in those nations — China, in particular — and compete with American companies.\r\n\r\n“The number of cases where exports can be sufficiently controlled are very, very, very small, and the chance of making an error is quite large,” said Jack Clark, head of policy at OpenAI, an artificial intelligence lab in San Francisco. “If this goes wrong, it could do real damage to the A.I. community.”\r\n\r\nThe export controls are being considered as the United States and China engage in a trade war. The Trump administration has been critical of the way China negotiates deals with American companies, often requiring the transfer of technology to Chinese partners as the cost of doing business in the country. And federal officials are making an aggressive argument that China has stolen American technology through hacking and industrial espionage.', 4, 'Curbs on A.I. Exports? Silicon Valley Fears Losing Its Edge', 'The Commerce Department is considering national security restrictions on artificial intelligence. Some worry they could stunt the industry in the U.S.'),
+(3, '2019-01-05 16:48:04', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\r\n<br>\r\n Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<br>\r\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<br>\r\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?', 3, 'Technology today', 'introduction to the subject or the problem');
 
 -- --------------------------------------------------------
 
@@ -52,8 +55,7 @@ INSERT INTO `blog` (`id_blog`, `date_blog`, `description`, `id_etudiant`, `titre
 CREATE TABLE `commentaire` (
   `id_commentaire` int(11) NOT NULL,
   `comm` text NOT NULL,
-  `date_comm` varchar(20) NOT NULL,
-  `upvotes` int(11) NOT NULL DEFAULT '0',
+  `date_comm` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_blog` int(11) DEFAULT NULL,
   `id_etudiant` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -62,8 +64,8 @@ CREATE TABLE `commentaire` (
 -- Dumping data for table `commentaire`
 --
 
-INSERT INTO `commentaire` (`id_commentaire`, `comm`, `date_comm`, `upvotes`, `id_blog`, `id_etudiant`) VALUES
-(1, 'that\'s coool', '22332', 22, 1, 4);
+INSERT INTO `commentaire` (`id_commentaire`, `comm`, `date_comm`, `id_blog`, `id_etudiant`) VALUES
+(1, 'that\'s coool', '0000-00-00 00:00:00', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -157,7 +159,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id_blog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_blog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `commentaire`
