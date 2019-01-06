@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+    
+<%@ page isErrorPage="true" import="java.io.*" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<title>404 HTML Template by Colorlib</title>
+	<title>Error!</title>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
@@ -30,7 +34,7 @@
 		<div class="notfound">
 			<div class="notfound-404">
 				<h1>Oops!</h1>
-				<h2>404 - The Page can't be found</h2>
+				<h2><%=exception.getMessage()%></h2>
 			</div>
 			<a href="#">Go TO Homepage</a>
 		</div>

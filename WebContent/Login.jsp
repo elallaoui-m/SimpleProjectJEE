@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
       <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
-
+<%@ page errorPage="ifError.jsp" %>
 
 
 
@@ -133,7 +133,7 @@
 	</div>
 	
 	
-<!-- <a href="#" onclick="signOut();">Sign out</a> -->
+<a href="#" onclick="signOut();">Sign out</a>
 	
 <!--===============================================================================================-->	
 	<script src="inc/vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -144,22 +144,8 @@
 	<script src="inc/js/main.js"></script>
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script src="inc/js/google.js" type="text/javascript"></script>
-		
-	<c:if test="${not empty param.logout && param.logout=='1'}">
 	
-	<script type="text/javascript">
-	$( window ).on("load",function() {
-		
-		gapi.auth2.init({
-			  client_id: '922252162446-9djl5kksq5beha2m35a0aoo5vshj398e.apps.googleusercontent.com'
-		})
-	  	var auth2 = gapi.auth2.getAuthInstance();
-	  	auth2.signOut();
-	  	auth2.disconnect();
-	  	//window.location.href= 'Login.jsp';
-	});
-	</script>
-	</c:if>
+	
 
 
 </body>

@@ -4,7 +4,7 @@
     <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
     
 <%@page import="controlServlets.Blog,controlServlets.Commentaire,java.util.List,controlServlets.Utilisateur" %>
-
+<%@ page errorPage="ifError.jsp" %>
 <%
     Blog myBlog = (Blog)request.getAttribute("blog");
 	List<Commentaire> ListC = (List<Commentaire>) request.getAttribute("comments");

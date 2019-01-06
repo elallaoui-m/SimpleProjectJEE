@@ -30,13 +30,14 @@ public class GoogleO extends HttpServlet {
 	
 		Utilisateur user = new Utilisateur();
 		ImplUtilisateur implUser = new ImplUtilisateur();
-		
+		System.out.println("here1");
 		String email = request.getParameter("email");
 		user = implUser.searchebyEmail(email);
 		
 		if(!user.equals(null))
 		{
-			return;
+			System.out.println("here2");
+			
 		}
 		
 		
@@ -44,6 +45,7 @@ public class GoogleO extends HttpServlet {
 		String faname = request.getParameter("faname");
 		String id = request.getParameter("id");
 		
+		System.out.println("here3");
 		user.setEmail(email);
 		user.setPrenom(name);
 		user.setNom(faname);
@@ -54,7 +56,12 @@ public class GoogleO extends HttpServlet {
 		
 		implUser.CreateUtilis(user);
 		
-		response.getWriter().println("done");
+		request.getSession().setAttribute("email", user.getEmail());
+		request.getSession().setAttribute("typeUser",user.getType() );
+		//request.setAttribute("user", Us);
+		request.getSession().setAttribute("Myuser", user);
+		request.getRequestDispatcher("/HomePageS").forward(request, response);
+		System.out.println("done");
 		
 	}
 

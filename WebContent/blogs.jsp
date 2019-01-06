@@ -4,10 +4,14 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 <%@ page import="java.util.*" %>
 <%@ page import="controlServlets.ImpBlog,controlServlets.Blog,java.util.List" %>
+<%@ page errorPage="ifError.jsp" %>
 <%
 	List<Blog> lst = (List<Blog>) request.getAttribute("lstBlog");
 %>
 
+
+<fmt:setLocale value = "en"/>
+<fmt:setBundle basename = "ressources.message" />
 
 <!DOCTYPE html>
 <html>
@@ -15,7 +19,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>simpleProject</title>
+    <title>AskSa</title>
 	
 <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
@@ -31,22 +35,22 @@
     <div>
         <div class="header-blue">
             <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
-                <div class="container"><a class="navbar-brand" href="#">Espace Etudiants</a>
+                <div class="container"><a class="navbar-brand" href="#">AskSa</a>
                     <div class="collapse navbar-collapse"
                         id="navcol-1">
                         <ul class="nav navbar-nav">
-                            <li class="nav-item" role="presentation"><a class="nav-link text-light active" href="#">Home</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link text-light" href="#">About</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link text-light" href="#">Contact</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-light active" href="#"><fmt:message key = "message.home"/></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-light" href="#"><fmt:message key = "message.about"/></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-light" href="#"><fmt:message key = "message.contact"/></a></a></li>
                         </ul>
                         <form class="form-inline mr-auto" target="_self">
                             <div class="form-group" style="background-color:#4d87a0;padding-left:10px;border-radius:10px"><label for="search-field"><i class="fa fa-search"> </i></label><input class="form-control search-field" type="search" name="search" autocomplete="on" id="search-field"></div>
-                        </form><span class="navbar-text actions"> <a href="#" class="login">Log In</a><a class="btn btn-light action-button" role="button" href="#">Sign Up</a></span></div>
+                        </form><span class="navbar-text actions"><a href="/SimpleProjectJEE/LogoutS" class="login">Log Out</a><a class="btn btn-light action-button" role="button" href="#">Profile</a></span></div>
                 </div>
             </nav>
             <div class="container hero">
                 <div class="row no-gutters" style="width:auto;font-size:24px;text-align:center">
-                    <div class="" style="width:1200px;margin:auto"><em class="text-light">Vous avez des questions n'ont pas encore des reponses ? Ici! La meilleure place<br>Posez vos questions et attendez des meilleures réponses :)</em></div>
+                    <div class="" style="width:1200px;margin:auto"><em class="text-light"><fmt:message key = "message.headerTextHome"/></em></div>
                 </div>
             </div>
         </div>
@@ -58,8 +62,8 @@
         <!-- Blog Entries Column -->
         <div class="col-md-8">
 
-          <h1 class="my-4">All Questions
-            <small>Nouveaux</small>
+          <h1 class="my-4"><fmt:message key = "message.allQuestion"/>
+            <small><fmt:message key = "message.new"/></small>
           </h1>
 
           <!-- Blog Post -->
@@ -93,7 +97,7 @@
           <!-- Pagination -->
 			<div class="row column">
 				<ul class="pagination" role="navigation" aria-label="Pagination">
-				<li class="disabled">Previous</li>
+				<li class="disabled"><fmt:message key = "message.preview"/></li>
 				<li class="current"><span class="show-for-sr">You're on page</span> 1</li>
 				<li><a href="#" aria-label="Page 2">2</a></li>
 				<li><a href="#" aria-label="Page 3">3</a></li>
@@ -101,7 +105,7 @@
 				<li class="ellipsis"></li>
 				<li><a href="#" aria-label="Page 12">12</a></li>
 				<li><a href="#" aria-label="Page 13">13</a></li>
-				<li><a href="#" aria-label="Next page">Next</a></li>
+				<li><a href="#" aria-label="Next page"><fmt:message key = "message.next"/></a></li>
 				</ul>
 			</div>
 
@@ -114,7 +118,7 @@
           
 
           <!-- Categories Widget -->
-          <div class="card my-4">
+          <!-- <div class="card my-4">
             <h5 class="card-header">Categories</h5>
             <div class="card-body">
               <div class="row">
@@ -146,15 +150,15 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <!-- Side Widget -->
-          <div class="card my-4">
+          <!-- <div class="card my-4">
             <h5 class="card-header">Side Widget</h5>
             <div class="card-body">
               You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
             </div>
-          </div>
+          </div> -->
 
         </div>
         </div>
@@ -175,7 +179,7 @@
                     </div>
                     <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
                 </div>
-                <p class="copyright">ADEOZE Copyright © 2019</p>
+                <p class="copyright">ASKSA Copyright © 2019</p>
             </div>
         </footer>
     </div>

@@ -40,7 +40,6 @@ function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut();
     auth2.disconnect();
-    //windows.location.href = 'Login.jsp';
   };
 
 function onSignIn(googleUser) {
@@ -59,12 +58,8 @@ function onSignIn(googleUser) {
 	  //document.getElementById("name").innerHTML = name;
 
 	  //document.getElementById("myP").style.visibility = "hidden";
-	  
 	  window.location.href = '/SimpleProjectJEE/GoogleO?email='+email+'&name='+name+'&id='+id+'&faname='+faname;
-	  
 
 	  //document.getElementById("status").innerHTML = 'Welcome '+name+'!<a href=success.jsp?email='+email+'&name='+name+'/>Continue with Google login</a></p>'
 
-	   
-	   
  };
