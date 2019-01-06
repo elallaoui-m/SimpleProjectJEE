@@ -4,6 +4,9 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 <%@ page import="java.util.*" %>
 <%@ page import="controlServlets.ImpBlog,controlServlets.Blog,java.util.List" %>
+<%
+	List<Blog> lst = (List<Blog>) request.getAttribute("lstBlog");
+%>
 
 
 <!DOCTYPE html>
@@ -20,7 +23,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
-    <link rel="stylesheet" href="assets/css/styles.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min2.css">
 </head>
 
 <body>
@@ -65,21 +68,23 @@
 	      		List<Blog> blogs = new ArrayList<Blog>();
 	      		blogs = blog.ShowAllBlog();*/
 	      		
-	      		Article blog = new Article();
+	      		//Article blog = new Article();
 	      		
-	          	for(int i=0;i<blog.ShowAllArticle().size();i++) {
+	      		
+	      		
+	          	for (Blog b : lst) {
 	          	
           	%>
           <div class="card mb-4">
             
             <div class="card-body">
-              <h2 class="card-title"><%= blog.ShowAllArticle().get(i).getTitre() %></h2>
-              <p class="card-text"><%= blog.ShowAllArticle().get(i).getDescription() %></p>
-              <a href="#" class="btn btn-primary">Read More &rarr;</a>
+              <h2 class="card-title"><%= b.getTitre() %></h2>
+              <p class="card-text"><%= b.getIntro() %></p>
+              <a href=<%="/SimpleProjectJEE/InvocBlogS?idblog="+b.getIdBlog() %> class="btn btn-primary">Read More &rarr;</a>
             </div>
             <div class="card-footer text-muted">
-              Posted on <%= blog.ShowAllArticle().get(i).getDateBlog() %>
-              <a href="#">Utilisateur</a>
+              Posted on <%= b.getDateBlog() %>
+              <a><%=b.getUtilisateur().getNom() %></a>
             </div>
           </div>
 

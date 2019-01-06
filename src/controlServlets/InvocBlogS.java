@@ -28,14 +28,22 @@ public class InvocBlogS extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Utilisateur us = (Utilisateur) request.getSession().getAttribute("Myuser");
-		System.out.println(us);
-		int idblog;
-		if( request.getAttribute("idblog") == null)
-		idblog = 1;
-		else idblog=Integer.parseInt(request.getParameter("idblog"));
+		if(us == null || us.getEmail()==null)
+		{
+			response.sendRedirect("error.html");
+			System.out.println("error");
+		}
+		else {
+			
+			//System.out.println(us);
+			String idblog="1";
+			idblog = request.getParameter("idblog");
+			request.getSession().setAttribute("id", us.getIdEtudiant());
+			request.getRequestDispatcher("/BlogDetailsS?idblog="+idblog).forward(request, response);
+		}
 		
-		request.getSession().setAttribute("id", us.getIdEtudiant());
-		request.getRequestDispatcher("/BlogDetailsS?idblog="+idblog).forward(request, response);
+		
+		
 		
 	}
 
