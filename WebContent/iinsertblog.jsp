@@ -1,3 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
+    
+<%@page import="controlServlets.Blog,controlServlets.Commentaire,java.util.List,controlServlets.Utilisateur,java.util.*" %>
+<%@ page errorPage="ifError.jsp" %>
+<%
+    Blog myBlog = (Blog)request.getAttribute("blog");
+    List<Commentaire> ListC = (List<Commentaire>) request.getAttribute("comments");
+    int idblogbyrequest =(int)request.getSession().getAttribute("id");
+    
+    Utilisateur us = (Utilisateur) request.getSession(false).getAttribute("Myuser");
+	if(us == null || us.getEmail()==null)
+	{
+		response.sendRedirect("error.jsp");
+		System.out.println("error");
+	}
+	
+	Random rand = new Random();
+	int n = rand.nextInt(11);
+	int m = rand.nextInt(11);
+	int l = rand.nextInt(11);
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,8 +67,8 @@
                 </div>
                 <div id="container_of_data">
                     
-                    <span id="name_user_pop" class="botton_name">Aourass Hamza</span>
-                    <span id="e-mail_pop" class="botton_name">hamza199738@gmail.com</span>
+                    <span id="name_user_pop" class="botton_name"><%=us.getNom()+" "+us.getPrenom() %></span>
+                    <span id="e-mail_pop" class="botton_name"><%=us.getEmail() %></span>
                 </div>
             </div>
             <div id="container_sub">
@@ -84,7 +109,7 @@
                         Notification
                     </span>
                     <div class="drop_number_data">
-                        +99
+                        <%=n %>
                     </div>
                 </div>
             </a>
@@ -96,7 +121,7 @@
                         Favoris
                     </span>
                     <div class="drop_number_data">
-                        +99
+                        <%=m %>
                     </div>
                 </div>
             </a>
@@ -109,13 +134,12 @@
                         Messages
                     </span>
                     <div class="drop_number_data">
-                        +99
+                        <%=l %>
                     </div>
                 </div>
             </a><a>
                 <div class="list_div hover_back ico_1000_drop">
-                    <span class="ion-chatboxes drop_menu_ico" style="
-                        color: #f71a1a;;">
+                    <span class="ion-chatboxes drop_menu_ico" style="color: #f71a1a;;">
                     </span>
                     <span class=" botton_name name_option_drop">
                         Admin Messages
@@ -123,7 +147,7 @@
                     
                 </div>
             </a>
-            <a>
+            <a >
                 <div class="list_div hover_back">
                     <span class="ion-help-circled drop_menu_ico">
                     </span>
@@ -141,7 +165,7 @@
                     </span>
                 </div>
             </a>
-            <a>
+            <a href="Editincription.jsp">
                 <div class="list_div hover_back">
                     <span class="ion-gear-a drop_menu_ico">
                     </span>
@@ -151,12 +175,12 @@
                     
                 </div>
             </a>
-            <a>
+            <a href="/SimpleProjectJEE/LogoutS">
                 <div class="list_div hover_back">
                     <span class="ion-power drop_menu_ico">
                     </span>
                     <span class=" botton_name name_option_drop">
-                        Se déconnecter
+                        Logout
                     </span>
                     
                 </div>
@@ -191,7 +215,7 @@
                         </div>
                     </div>
                     <div class="drop_menu" id="first_drop">
-                        <a href="accueil.php">
+                        <a href="/SimpleProjectJEE/HomePageS">
                             <div class="list_div hover_back">
                                 <span class="ion-home drop_menu_ico">
                                 </span>
@@ -201,7 +225,7 @@
                                 
                             </div>
                         </a>
-                        <a href="georefer.php">
+                        <!-- <a href="georefer.php">
                             <div class="list_div hover_back">
                                 <span class="ion-code drop_menu_ico">
                                 </span>
@@ -210,7 +234,7 @@
                                 </span>
                                 
                             </div>
-                        </a>
+                        </a> -->
                         
                         <div class="triangle">
                         </div>
@@ -251,7 +275,7 @@
                         <span class="ion-ios-bell-outline span_icon">
                         </span>
                         <div class="number_of_data">
-                            +99
+                            <%=n %>
                         </div>
                     </div>
                     <div class="drop_menu drop_for_icon" id="first_drop_icon">
@@ -264,7 +288,7 @@
                         <span class="ion-ios-chatbubble-outline span_icon">
                         </span>
                         <div class="number_of_data">
-                            +99
+                            <%=n %>
                         </div>
                     </div>
                     <div class="drop_menu  drop_for_icon">
@@ -277,7 +301,7 @@
                         <span class="ion-ios-heart-outline span_icon">
                         </span>
                         <div class="number_of_data">
-                            +99
+                            <%=n %>
                         </div>
                     </div>
                     <div class="drop_menu  drop_for_icon favoris_drop">
@@ -304,15 +328,15 @@
                                 <div id="main_drop_data_user" class="list_div hover_back">
                                     <div id="div_abr_name">
                                         <span id="span_abr_name" class="button_name">
-                                            AH
+                                            <%= us.getNom().charAt(0)+us.getPrenom().charAt(0) %>
                                         </span>
                                     </div>
                                     <div>
                                         <span id="name_user" class="botton_name">
-                                            Aourass Hamza
+                                            <%= us.getNom()+" "+us.getPrenom() %>
                                         </span>
                                         <span id="user_e-mail" class="botton_name">
-                                            hamza199738@gmail.com
+                                           <%= us.getEmail() %>
                                         </span>
                                     </div>
                                 </div>
@@ -325,7 +349,7 @@
                                         Notification
                                     </span>
                                     <div class="drop_number_data">
-                                        +99
+                                        <%=n %>
                                     </div>
                                 </div>
                             </a>
@@ -337,7 +361,7 @@
                                         Favoris
                                     </span>
                                     <div class="drop_number_data">
-                                        +99
+                                        <%=l %>
                                     </div>
                                 </div>
                             </a>
@@ -349,7 +373,19 @@
                                         Messages
                                     </span>
                                     <div class="drop_number_data">
-                                        +99
+                                        <%=m %>
+                                    </div>
+                                </div>
+                            </a>
+                            <a>
+                                <div class="list_div hover_back ico_1000_drop">
+                                    <span class="ion-chatboxes drop_menu_ico" style="color: #f71a1a;;">
+                                    </span>
+                                    <span class=" botton_name name_option_drop" >
+                                        Admin messages
+                                    </span>
+                                    <div class="drop_number_data">
+                                        <%=m %>
                                     </div>
                                 </div>
                             </a>
@@ -362,7 +398,7 @@
                                     </span>
                                 </div>
                             </a>
-                            <a>
+                            <a href="contact.jsp">
                                 <div id="link_contact_drop" class="list_div hover_back ">
                                     <span class="ion-android-contacts drop_menu_ico">
                                     </span>
@@ -371,7 +407,7 @@
                                     </span>
                                 </div>
                             </a>
-                            <a>
+                            <a href="Editicription.jsp">
                                 <div class="list_div hover_back">
                                     <span class="ion-gear-a drop_menu_ico">
                                     </span>
@@ -381,12 +417,12 @@
                                     
                                 </div>
                             </a>
-                            <a>
+                            <a href="/SimpleProjectJEE/LogoutS">
                                 <div class="list_div hover_back">
                                     <span class="ion-power drop_menu_ico">
                                     </span>
                                     <span class=" botton_name name_option_drop">
-                                        Se déconnecter
+                                        Logout
                                     </span>
                                     
                                 </div>
@@ -404,15 +440,15 @@
                             <div id="main_drop_data_user" class="list_div hover_back">
                                 <div id="div_abr_name">
                                     <span id="span_abr_name" class="button_name">
-                                        AH
+                                        <%= us.getNom().charAt(0)+us.getPrenom().charAt(0) %>
                                     </span>
                                 </div>
                                 <div>
                                     <span id="name_user" class="botton_name">
-                                        Aourass Hamza
+                                        <%= us.getNom()+" "+us.getPrenom() %>
                                     </span>
                                     <span id="user_e-mail" class="botton_name">
-                                        hamza199738@gmail.com
+                                        <%= us.getEmail() %>
                                     </span>
                                 </div>
                             </div>
@@ -425,7 +461,7 @@
                                     Notification
                                 </span>
                                 <div class="drop_number_data">
-                                    +99
+                                    <%=n%>
                                 </div>
                             </div>
                         </a>
@@ -437,7 +473,7 @@
                                     Favoris
                                 </span>
                                 <div class="drop_number_data">
-                                    +99
+                                    <%=m%>
                                 </div>
                             </div>
                         </a>
@@ -449,7 +485,7 @@
                                     Messages
                                 </span>
                                 <div class="drop_number_data">
-                                    +99
+                                    <%=l%>
                                 </div>
                             </div>
                         </a>
@@ -462,7 +498,7 @@
                                 </span>
                             </div>
                         </a>
-                        <a>
+                        <a href="contact.jsp">
                             <div id="link_contact_drop" class="list_div hover_back ">
                                 <span class="ion-android-contacts drop_menu_ico">
                                 </span>
@@ -471,7 +507,7 @@
                                 </span>
                             </div>
                         </a>
-                        <a>
+                        <a href="Editincription.jsp">
                             <div class="list_div hover_back">
                                 <span class="ion-gear-a drop_menu_ico">
                                 </span>
@@ -481,12 +517,12 @@
                                 
                             </div>
                         </a>
-                        <a>
+                        <a href="simpleProjectJEE/LogoutS">
                             <div class="list_div hover_back">
                                 <span class="ion-power drop_menu_ico">
                                 </span>
                                 <span class=" botton_name name_option_drop">
-                                    Se déconnecter
+                                    Logout
                                 </span>
                                 
                             </div>
@@ -527,7 +563,7 @@
             
         </div>
     </div>
-  
+
     
 <div class="contact-clean">
         <form method="post" class="contact2-form validate-form">

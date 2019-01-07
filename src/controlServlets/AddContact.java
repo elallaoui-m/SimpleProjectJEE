@@ -30,10 +30,8 @@ public class AddContact extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		 msg = request.getParameter("message");
-		 name = request.getParameter("name");
-		 email = request.getParameter("email");
-		
+		 
+		doPost(request, response);
 				
 	}
 
@@ -42,7 +40,10 @@ public class AddContact extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		msg = request.getParameter("message");
+		name = request.getParameter("name");
+		email = request.getParameter("email");
 		Contact ct = new Contact(email,msg,name);
 		ImplContact imcon = new ImplContact();
 		imcon.addMsg(ct);

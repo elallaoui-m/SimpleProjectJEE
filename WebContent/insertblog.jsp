@@ -4,11 +4,11 @@
     <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
     
 <%@page import="controlServlets.Blog,controlServlets.Commentaire,java.util.List,controlServlets.Utilisateur,java.util.*" %>
-<%@ page errorPage="ifError.jsp" %>
+<%-- <%@ page errorPage="ifError.jsp" %> --%>
 <%
     Blog myBlog = (Blog)request.getAttribute("blog");
     List<Commentaire> ListC = (List<Commentaire>) request.getAttribute("comments");
-    int idblogbyrequest =(int)request.getSession().getAttribute("id");
+    //int idblogbyrequest =(int)request.getSession().getAttribute("id");
     
     Utilisateur us = (Utilisateur) request.getSession(false).getAttribute("Myuser");
 	if(us == null || us.getEmail()==null)
@@ -24,24 +24,35 @@
 %>
 
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
         
-        <link rel="stylesheet" href="css\notification.css">
+    <link rel="stylesheet" href="css\notification.css">
             
-            <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-            <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-            <link rel="shortcut icon" href="favicon.ico">
-                    
-                    <!-- Bootstrap Core CSS file -->
-                    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-                        
-                        <!-- Override CSS file - add your own CSS rules -->
-                        <link rel="stylesheet" href="assets/css/styles.css">
-                <title>AskSa</title>
-                <script src="js/jquery-1.11.2.min.js"></script>
-                <script src="js/jquery-ui.js"></script>
-                </head>
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <title></title>
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main2.css">
+</head>
 <body>
     
     <div id="popup" style="display: block;">
@@ -553,206 +564,48 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-sm-8 col-sm-push-4">
-                                        <div class="page-header">
-                                            <h1><%=myBlog.getTitre() %></h1>
-                                            <p>Posted by <span class="glyphicon glyphicon-user"></span> <a href="#"><%=myBlog.getUtilisateur().getNom() %></a>&nbsp;<span class="glyphicon glyphicon-time"><%=myBlog.getDateBlog() %></span> </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-                                
-                                <div class="row">
-                                    <div class="col-sm-8 col-sm-push-4">
-                                        
-                                        <!-- Image -->
-                                        
-                                        
-                                        <p class="lead"><%=myBlog.getIntro() %></p>
-                                        <p style="text-align:justify"><%=myBlog.getDescription().replaceAll("\n", "<br><br>") %></p>
-                                        <hr>
-                                        
-                                        <!-- Comments -->
-                                        <h3>Comments</h3>
-                                        
-                                        
-                                        <% for (Commentaire c : ListC) {%>
-                                            
-                                            <div class="well">
-                                            <div class="media">
-                                                <div class="media-left" style="
-                                                    width: 70px !important;">
-                                                    
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="margin-t-0"><a href="#"><%=c.getUtilisateur().getNom() %></a></h4>
-                                                    <p><a href="#"><%=c.getDateComm() %></a></p>
-                                                    <p><%=c.getComm() %></p>
-                                                    <p>
-                                                    <button class="btn btn-sm btn-default">
-                                                        <span class="glyphicon glyphicon-thumbs-up"></span> Upvote
-                                                    </button>
-                                                    <%=c.getUpvotes() %> likes<br>
-                                                    
-                                                    <% if(c.getUtilisateur().getIdEtudiant()==(idblogbyrequest)){
-                                                        out.println("<a href='/SimpleProjectJEE/HideComment?idcomment="+c.getIdCommentaire()+"&idblog="+c.getBlog().getIdBlog()+"'>Delete Comment</a>");
-                                                        }
-                                                        %>
-                                                    
-                                                    
-                                                    
-                                                        
-                                                    </p>
-                                                     
-                                                    
-                                                </div>
-                                            </div>
-                                         </div>
-                                        <%} %>
-                                        
-                                        
-                                        
-                                        
-                                        <hr>
-                                        
-                                        <!-- Comment form -->
-                                        <h3>Leave a comment</h3>
-                                        <p>Please keep in mind that comments are moderated and rel="nofollow" is in use. So, please do not use a spammy keyword or a domain as your name, or else it will be deleted. Thank you!</p>
-                                        
-                                        <div class="well">
-                                            <form action="<c:url value = "/AddComment"/>" methode='post'>
-                                                
-                                                <div class="form-group">
-                                                    <label for="contactComment">Comment</label>
-                                                    <textarea name=comment class="form-control" id="contactComment"></textarea>
-                                                    <input hidden name='idblog' value=<%=myBlog.getIdBlog() %>>
-                                                </div>
-                                                <button type="submit" class="btn btn-default">Submit</button>
-                                            </form>
-                                        </div>
-                                        <hr>
-                                        
-                                    </div>
-                                    <div class="col-sm-4 col-sm-pull-8">
-                                        <!-- Search -->
-                                        <div class="well">
-                                            <h4 class="margin-t-0">Search</h4>
-                                            <form action="#">
-                                                <div class="input-group">
-                                                    <label class="sr-only" for="search-form">Search the site</label>
-                                                    <input type="text" class="form-control" id="search-form">
-                                                        <span class="input-group-btn">
-                                                            <button class="btn btn-default" type="button">
-                                                                <span class="glyphicon glyphicon-search"></span>
-                                                                <span class="sr-only">Search</span>
-                                                            </button>
-                                                        </span>
-                                                        </div>
-                                            </form>
-                                        </div>
-                                        
-                                        <!-- list group -->
-                                        
-                                        
-                                        <!-- Panel -->
-                                        <div class="panel panel-default" style="
-                                            overflow: hidden;">
-                                            
-                                            <div class="container" style="
-                                                ">
-                                                <div class=" profile" style="
-                                                    max-width: 100%;">
-                                                    <div class="col-md-4">
-                                                        <div class="profile-sidebar">
-                                                            <!-- SIDEBAR USERPIC -->
-                                                            
-                                                            <!-- END SIDEBAR USERPIC -->
-                                                            <!-- SIDEBAR USER TITLE -->
-                                                            <div class="profile-usertitle" style="
-                                                                margin: auto;margin-right: 47px;">
-                                                                <div class="profile-usertitle-name">
-                                                                    ${Myuser.nom }&nbsp;${Myuser.prenom}
-                                                                </div>
-                                                                <div class="profile-usertitle-job" style="
-                                                                    margin-bottom: 1px;">
-                                                                    User
-                                                                </div>
-                                                                <div style="
-                                                                    color: #686F7A;display: block;
-                                                                    overflow: hidden;
-                                                                    text-overflow: ellipsis;
-                                                                    white-space: nowrap;
-                                                                    line-height: 1.43;opacity: 0.7;">
-                                                                    ${Myuser.email}
-                                                                </div>
-                                                            </div>
-                                                            <!-- END SIDEBAR USER TITLE -->
-                                                            <!-- SIDEBAR BUTTONS -->
-                                                            
-                                                            <!-- END SIDEBAR BUTTONS -->
-                                                            <!-- SIDEBAR MENU -->
-                                                            <div class="profile-usermenu">
-                                                                <ul class="nav">
-                                                                    <li class="active">
-                                                                        <a href="#">
-                                                                            <i class="glyphicon glyphicon-home"></i>
-                                                                            Overview </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="Editincription.jsp">
-                                                                            <i class="glyphicon glyphicon-user"></i>
-                                                                            Account Settings </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="/SimpleProjectJEE/LogoutS	">
-                                                                            <i class="glyphicon glyphicon-log-out"></i>
-                                                                            Disconnect </a>
-                                                                    </li>
-                                                                    <!-- <li>
-                                                                        <a href="#" target="_blank">
-                                                                            <i class="glyphicon glyphicon-ok"></i>
-                                                                            Tasks </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <i class="glyphicon glyphicon-flag"></i>
-                                                                            Help </a>
-                                                                    </li> -->
-                                                                </ul>
-                                                            </div>
-                                                            <!-- END MENU -->
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </div>
-                                            </div>
-                                            
-                                            <br>
-                                            <br>
-                                        </div>
-                                        
-                                        <!-- Panel -->
-                                        
-                                        
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-                                
-                                
-                                
-                                <!-- JQuery scripts -->
-  
     
-    <script src="js/menu.js"></script>
-    <script>
-        
-        </script>
+<div class="contact-clean">
+        <form method="post" class="contact2-form validate-form">
+            <h2 class="text-center">New Blog</h2>
+				<div class="wrap-input2 validate-input" data-validate="Titre is required">
+					<input class="input2" type="text" name="name">
+					<span class="focus-input2" data-placeholder="TITRE"></span>
+				</div>
+
+				<div class="wrap-input2 validate-input" data-validate = "Introduction is required">
+					<input class="input2" type="text" name="email">
+					<span class="focus-input2" data-placeholder="INTRODUCTION"></span>
+				</div>
+
+				<div class="wrap-input2 validate-input" data-validate = "Blog is required">
+					<textarea class="input2" name="message"></textarea>
+					<span class="focus-input2" data-placeholder="BLOG"></span>
+				</div>
+            <div class="form-group"><button class="btn btn-primary" type="submit">Add Blog </button></div>
+        </form>
+    </div>
     
     
-    
-    
-    
-    
+	<script src="js/menu.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>   
 </body></html>

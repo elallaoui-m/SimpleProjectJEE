@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LoginS
@@ -42,7 +43,7 @@ public class LoginS extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String pass = request.getParameter("pass");
 		String user = request.getParameter("email");
@@ -54,10 +55,17 @@ public class LoginS extends HttpServlet {
 				
 			}
 			
-			request.getSession().setAttribute("email", user);
-			request.getSession().setAttribute("typeUser",Us.getType() );
+			HttpSession oldSession = request.getSession(false);
+            if (oldSession != null) {
+                oldSession.invalidate();
+            }
+            //generate a new session
+            request.getSession(true);
+			
+			request.getSession(false).setAttribute("email", user);
+			request.getSession(false).setAttribute("typeUser",Us.getType() );
 			//request.setAttribute("user", Us);
-			request.getSession().setAttribute("Myuser", Us);
+			request.getSession(false).setAttribute("Myuser", Us);
 			
 			request.getRequestDispatcher("/HomePageS").forward(request, response);
 			
@@ -94,9 +102,9 @@ public class LoginS extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		doPost(request, response);
 	}
 
 }

@@ -4,6 +4,15 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 <%@ page errorPage="ifError.jsp" %>
 <%@ page import="controlServlets.Utilisateur" %>
+
+<%
+	Utilisateur us = (Utilisateur) request.getSession().getAttribute("Myuser");
+	if(us == null || us.getEmail()==null)
+	{
+		response.sendRedirect("error.jsp");
+		System.out.println("error");
+	}
+%>
 <%-- <%Utilisateur Myuser =(Utilisateur) request.getSession().getAttribute("user"); %> --%>
 <fmt:setLocale value = "en"/>
 <fmt:setBundle basename = "ressources.message" /> 

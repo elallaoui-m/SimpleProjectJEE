@@ -25,21 +25,22 @@ public class InvocBlogS extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void dePost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Utilisateur us = (Utilisateur) request.getSession().getAttribute("Myuser");
+		Utilisateur us = (Utilisateur) request.getSession(false).getAttribute("Myuser");
 		if(us == null || us.getEmail()==null)
 		{
-			response.sendRedirect("error.html");
+			response.sendRedirect("ifError.jsp");
 			System.out.println("error");
 		}
 		else {
 			
 			//System.out.println(us);
-			String idblog="1";
+			String idblog;
 			idblog = request.getParameter("idblog");
-			request.getSession().setAttribute("id", us.getIdEtudiant());
-			request.getRequestDispatcher("/BlogDetailsS?idblog="+idblog).forward(request, response);
+			request.getSession(false).setAttribute("id", us.getIdEtudiant());
+			request.getRequestDispatcher("/BlogDetailsS").forward(request, response);
+			System.out.println(idblog+"invoc");
 		}
 		
 		
@@ -50,9 +51,9 @@ public class InvocBlogS extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		dePost(request, response);
 	}
 
 }

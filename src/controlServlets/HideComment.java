@@ -25,20 +25,31 @@ public class HideComment extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void dePost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String s = request.getParameter("idcomment");
+		Utilisateur us = (Utilisateur) request.getSession().getAttribute("Myuser");
+		if(us == null || us.getEmail()==null)
+		{
+			response.sendRedirect("error.jsp");
+			System.out.println("error");
+		}
+		else
+		{
+			String s = request.getParameter("idcomment");
 		ImplCommentaire imC =  new ImplCommentaire();
 		imC.DeleteComment(Integer.parseInt(s));
-		request.getRequestDispatcher("/InvocBlogS").forward(request, response);
+		//System.out.println("hide"+request.getParameter("idblog"));
+		request.getRequestDispatcher("/InvocBlogS?idblog="+request.getParameter("idblog")).forward(request, response);
+		}
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		dePost(request, response);
 	}
 
 }

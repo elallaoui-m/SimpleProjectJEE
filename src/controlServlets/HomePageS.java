@@ -27,9 +27,9 @@ public class HomePageS extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Utilisateur us = (Utilisateur) request.getSession().getAttribute("Myuser");
+		Utilisateur us = (Utilisateur) request.getSession(false).getAttribute("Myuser");
 		if(us == null || us.getEmail()==null)
 		{
 			response.sendRedirect("ifError.jsp");
@@ -47,9 +47,9 @@ public class HomePageS extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		doPost(request, response);
 	}
 
 }

@@ -133,7 +133,7 @@
 	</div>
 	
 	
-<a href="#" onclick="signOut();">Sign out</a>
+<!-- <a href="#" onclick="signOut();">Sign out</a> -->
 	
 <!--===============================================================================================-->	
 	<script src="inc/vendor/jquery/jquery-3.2.1.min.js"></script>

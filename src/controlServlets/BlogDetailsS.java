@@ -27,27 +27,40 @@ public class BlogDetailsS extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String id_blog = request.getParameter("idblog");
 		
-		ImpBlog imB  =  new ImpBlog();
-		ImplCommentaire imC =  new ImplCommentaire();
-		
-		Blog b = imB.FindBlog(Integer.parseInt(id_blog));
-		List<Commentaire> lst = imC.GetComments(Integer.parseInt(id_blog));
-		
-		/*response.getWriter().println(b);
-		
-		for (Commentaire c : lst)
+		Utilisateur us = (Utilisateur) request.getSession(false).getAttribute("Myuser");
+		if(us == null || us.getEmail()==null)
 		{
-			response.getWriter().println(c);
+			response.sendRedirect("ifError.jsp");
+			System.out.println("error");
+		}
+		else
+		{
+			String id_blog = (String) request.getParameter("idblog");
 			
-		}*/
+			System.out.println(id_blog+" Blogd");
+			
+			ImpBlog imB  =  new ImpBlog();
+			ImplCommentaire imC =  new ImplCommentaire();
+			
+			Blog b = imB.FindBlog(Integer.parseInt(id_blog));
+			List<Commentaire> lst = imC.GetComments(Integer.parseInt(id_blog));
+			
+			/*response.getWriter().println(b);
+			
+			for (Commentaire c : lst)
+			{
+				response.getWriter().println(c);
+				
+			}*/
+			
+			request.setAttribute("blog", b);
+			request.setAttribute("comments", lst);
+			request.getRequestDispatcher("detailBlog.jsp").forward(request, response);
+		}
 		
-		request.setAttribute("blog", b);
-		request.setAttribute("comments", lst);
-		request.getRequestDispatcher("detailBlog.jsp").forward(request, response);
 		
 		
 		
@@ -57,9 +70,9 @@ public class BlogDetailsS extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		doPost(request, response);
 	}
 
 }

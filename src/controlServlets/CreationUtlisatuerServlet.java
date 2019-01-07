@@ -27,7 +27,7 @@ public class CreationUtlisatuerServlet extends HttpServlet {
       
     }
 
-    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+    public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* � la r�ception d'une requ�te GET, simple affichage du formulaire */
         //this.getServletContext().getRequestDispatcher( VUE_FORM ).forward( request, response );
     	 /* Pr�paration de l'objet formulaire */
@@ -42,9 +42,9 @@ public class CreationUtlisatuerServlet extends HttpServlet {
         out.append("okk");
     }
 
-    public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         
-
+    		doPost(request,response);
        
 
        

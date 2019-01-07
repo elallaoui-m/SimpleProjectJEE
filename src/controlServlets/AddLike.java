@@ -25,10 +25,17 @@ public class AddLike extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
 		Utilisateur us = (Utilisateur) request.getSession().getAttribute("Myuser");
+		if(us == null || us.getEmail()==null)
+		{
+			response.sendRedirect("ifError.jsp");
+			System.out.println("error");
+		}
+		
+		
 		//System.out.println(us);
 		String cmm = request.getParameter("comment");
 		String idb =  request.getParameter("idblog");
@@ -45,9 +52,9 @@ public class AddLike extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		doPost(request, response);
 	}
 
 }
