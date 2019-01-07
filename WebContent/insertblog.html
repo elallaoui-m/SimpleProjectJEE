@@ -1,37 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
-<%@ page import="java.util.*" %>
-<%@ page import="controlServlets.ImpBlog,controlServlets.Utilisateur,controlServlets.Blog,java.util.List" %>
-<%@ page errorPage="ifError.jsp" %>
-<%
-    List<Blog> lst = (List<Blog>) request.getAttribute("lstBlog");
-%>
-
-
-<fmt:setLocale value = "en"/>
-<fmt:setBundle basename = "ressources.message" />
-
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
         
-        <link rel="stylesheet" href="css\notification.css">
+    <link rel="stylesheet" href="css\notification.css">
             
-            <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-            <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
-            <link rel="stylesheet" href="assets/css/styles.min2.css">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-                <title>AskSa</title>
-                <script src="js/jquery-1.11.2.min.js"></script>
-                <script src="js/jquery-ui.js"></script>
-                </head>
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <title></title>
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main2.css">
+</head>
 <body>
     
     <div id="popup" style="display: block;">
@@ -531,160 +527,49 @@
             
         </div>
     </div>
-    <div>
-        <div class="container">
-            <div class="row">
+  
+    
+<div class="contact-clean">
+        <form method="post" class="contact2-form validate-form">
+            <h2 class="text-center">New Blog</h2>
+				<div class="wrap-input2 validate-input" data-validate="Titre is required">
+					<input class="input2" type="text" name="name">
+					<span class="focus-input2" data-placeholder="TITRE"></span>
+				</div>
 
-        <!-- Blog Entries Column -->
-        <div class="col-md-8">
+				<div class="wrap-input2 validate-input" data-validate = "Introduction is required">
+					<input class="input2" type="text" name="email">
+					<span class="focus-input2" data-placeholder="INTRODUCTION"></span>
+				</div>
 
-          <h1 class="my-4"><fmt:message key = "message.allQuestion"/>
-            <small><fmt:message key = "message.new"/></small>
-          </h1>
-
-          <!-- Blog Post -->
-          <% 
-                /*ImpBlog blog = new ImpBlog();
-                List<Blog> blogs = new ArrayList<Blog>();
-                blogs = blog.ShowAllBlog();*/
-                
-                //Article blog = new Article();
-                
-                
-                
-                for (Blog b : lst) {
-                
-            %>
-          <div class="card mb-4">
-            
-            <div class="card-body">
-              <h2 class="card-title"><%= b.getTitre() %></h2>
-              <p class="card-text"><%= b.getIntro() %></p>
-              <a href=<%="/SimpleProjectJEE/InvocBlogS?idblog="+b.getIdBlog() %> class="btn btn-primary">Read More &rarr;</a>
-            </div>
-            <div class="card-footer text-muted">
-              Posted on <%= b.getDateBlog() %>
-              <a><%=b.getUtilisateur().getNom() %></a>
-              
-              <%
-                if(b.getUtilisateur().getIdEtudiant() == ((Utilisateur)(request.getSession().getAttribute("Myuser"))).getIdEtudiant()  )
-                {
-                    
-                
-              %>
-              <a href="Editincription.jsp">
-                <i class="fa fa-edit"></i>
-              Edit </a><a href="Editincription.jsp">
-              <i class="fa fa-trash"></i>
-              Delete </a>
-              
-              <% }%>
-              
-            </div>
-          </div>
-
-         <% } %>
-
-          <!-- Pagination -->
-            <div class="row column">
-                <ul class="pagination" role="navigation" aria-label="Pagination">
-                <li class="disabled"><fmt:message key = "message.preview"/></li>
-                <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-                <li><a href="#" aria-label="Page 2">2</a></li>
-                <li><a href="#" aria-label="Page 3">3</a></li>
-                <li><a href="#" aria-label="Page 4">4</a></li>
-                <li class="ellipsis"></li>
-                <li><a href="#" aria-label="Page 12">12</a></li>
-                <li><a href="#" aria-label="Page 13">13</a></li>
-                <li><a href="#" aria-label="Next page"><fmt:message key = "message.next"/></a></li>
-                </ul>
-
-
-        <!-- Sidebar Widgets Column -->
-        <div class="col-md-4">
-
-          <!-- Search Widget -->
-          
-
-          <!-- Categories Widget -->
-          <!-- <div class="card my-4">
-            <h5 class="card-header">Categories</h5>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#">Web Design</a>
-                    </li>
-                    <li>
-                      <a href="#">HTML</a>
-                    </li>
-                    <li>
-                      <a href="#">Freebies</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#">JavaScript</a>
-                    </li>
-                    <li>
-                      <a href="#">CSS</a>
-                    </li>
-                    <li>
-                      <a href="#">Tutorials</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- Side Widget -->
-          <!-- <div class="card my-4">
-            <h5 class="card-header">Side Widget</h5>
-            <div class="card-body">
-              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
-            </div>
-          </div> -->
-
-        </div>
-        </div>
+				<div class="wrap-input2 validate-input" data-validate = "Blog is required">
+					<textarea class="input2" name="message"></textarea>
+					<span class="focus-input2" data-placeholder="BLOG"></span>
+				</div>
+            <div class="form-group"><button class="btn btn-primary" type="submit">Add Blog </button></div>
+        </form>
     </div>
-    <div class="article-clean"></div>
-    <div></div>
-    <div></div>
-    <div class="footer-dark">
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col item social">
-                        <ul class="list-inline float-none justify-content-center align-items-center align-content-center">
-                            <li class="list-inline-item"><a href="#">Home</a></li>
-                            <li class="list-inline-item"><a href="#">About</a></li>
-                            <li class="list-inline-item"><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
-                </div>
-                <p class="copyright">ASKSA Copyright © 2019</p>
-            </div>
-        </footer>
-    </div>
-
-
-
-
-
-
-    <script src="js/menu.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    
+	<script src="js/menu.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
 
-    
-    
-    
-    
-    
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>   
 </body></html>

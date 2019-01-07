@@ -7,70 +7,530 @@
 <%@ page errorPage="ifError.jsp" %>
 <%
     Blog myBlog = (Blog)request.getAttribute("blog");
-	List<Commentaire> ListC = (List<Commentaire>) request.getAttribute("comments");
-	int idblogbyrequest =(int)request.getSession().getAttribute("id");
+    List<Commentaire> ListC = (List<Commentaire>) request.getAttribute("comments");
+    int idblogbyrequest =(int)request.getSession().getAttribute("id");
 %>
-    
-
-
-
 
 <!DOCTYPE html>
 <html lang="en"><head>
-    <meta charset="utf-8">
-        <title>Page title - Sitename</title>
-        </head><body>
+    <meta charset="UTF-8">
+        
+        <link rel="stylesheet" href="css\notification.css">
             
-            <!-- icons -->
+            <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
             <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-                <link rel="shortcut icon" href="favicon.ico">
+            <link rel="shortcut icon" href="favicon.ico">
                     
                     <!-- Bootstrap Core CSS file -->
                     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
                         
                         <!-- Override CSS file - add your own CSS rules -->
                         <link rel="stylesheet" href="assets/css/styles.css">
-                            
-                            <!-- Conditional comment containing JS files for IE6 - 8 -->
-                            <!--[if lt IE 9]>
-                             <script src="assets/js/html5.js"></script>
-                             <script src="assets/js/respond.min.js"></script>
-                             <![endif]-->
-                            
-                            
-                            
-                            <!-- Navigation -->
-                            <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-                                <div class="container-fluid">
-                                    
-                                    <!-- Brand and toggle get grouped for better mobile display -->
-                                    <div class="navbar-header">
-                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                            <span class="sr-only">Toggle navigation</span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                        </button>
-                                        <a class="navbar-brand" href="#">AskSa</a>
-                                    </div>
-                                    <!-- /.navbar-header -->
-                                    
-                                    <!-- Collect the nav links, forms, and other content for toggling -->
-                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="#">Nav item 1</a></li>
-                                            <li><a href="#">Nav item 2</a></li>
-                                            <li><a href="#">Nav item 3</a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- /.navbar-collapse -->
+                <title>AskSa</title>
+                <script src="js/jquery-1.11.2.min.js"></script>
+                <script src="js/jquery-ui.js"></script>
+                </head>
+<body>
+    
+    <div id="popup" style="display: block;">
+        
+        <div id="container_popup_menu" style="display: block;">
+            
+            <div id="about_user">
+                <div onclick="hide_slid_menu()" id="close_icon">
+                    <p>
+                    X
+                    </p>
+                </div>
+                <div id="container_of_data">
+                    
+                    <span id="name_user_pop" class="botton_name">Aourass Hamza</span>
+                    <span id="e-mail_pop" class="botton_name">hamza199738@gmail.com</span>
+                </div>
+            </div>
+            <div id="container_sub">
+                
+                <div id="parent_sub" onclick="show_sub_menu()" class="slid_menu_list hover_back ">
+                    <span class="ion-grid drop_menu_ico">
+                    </span>
+                    <span class=" botton_name name_option_drop">
+                        Pages
+                    </span>
+                    
+                    <b class="button_for_cat_slid">
+                    </b>
+                </div>
+                <div id="sub_menu">
+                    <a href="accueil.php">
+                        <div class="items_sub hover_back ">
+                            <span class="ion-android-contacts drop_menu_ico">
+                            </span>
+                            <span class=" botton_name name_option_drop">
+                                Accueil
+                            </span>
+                        </div>
+                    </a><a href="georefer.php"><div class="items_sub hover_back ">
+                        <span class="ion-android-contacts drop_menu_ico">
+                        </span>
+                        <span class=" botton_name name_option_drop">
+                            Projet
+                        </span>
+                    </div></a>
+                </div>
+            </div>
+            <a>
+                <div class="list_div hover_back ico_1000_drop">
+                    <span class="ion-ios-bell drop_menu_ico">
+                    </span>
+                    <span class=" botton_name name_option_drop">
+                        Notification
+                    </span>
+                    <div class="drop_number_data">
+                        +99
+                    </div>
+                </div>
+            </a>
+            <a>
+                <div class="list_div hover_back ico_1000_drop">
+                    <span class="ion-heart drop_menu_ico">
+                    </span>
+                    <span class=" botton_name name_option_drop">
+                        Favoris
+                    </span>
+                    <div class="drop_number_data">
+                        +99
+                    </div>
+                </div>
+            </a>
+            
+            <a>
+                <div class="list_div hover_back ico_1000_drop">
+                    <span class="ion-chatboxes drop_menu_ico">
+                    </span>
+                    <span class=" botton_name name_option_drop">
+                        Messages
+                    </span>
+                    <div class="drop_number_data">
+                        +99
+                    </div>
+                </div>
+            </a><a>
+                <div class="list_div hover_back ico_1000_drop">
+                    <span class="ion-chatboxes drop_menu_ico" style="
+                        color: #f71a1a;;">
+                    </span>
+                    <span class=" botton_name name_option_drop">
+                        Admin Messages
+                    </span>
+                    
+                </div>
+            </a>
+            <a>
+                <div class="list_div hover_back">
+                    <span class="ion-help-circled drop_menu_ico">
+                    </span>
+                    <span class=" botton_name name_option_drop">
+                        Aide
+                    </span>
+                </div>
+            </a>
+            <a>
+                <div id="link_contact_drop" class="list_div hover_back ">
+                    <span class="ion-android-contacts drop_menu_ico">
+                    </span>
+                    <span class=" botton_name name_option_drop">
+                        Contact
+                    </span>
+                </div>
+            </a>
+            <a>
+                <div class="list_div hover_back">
+                    <span class="ion-gear-a drop_menu_ico">
+                    </span>
+                    <span class=" botton_name name_option_drop">
+                        Parametre
+                    </span>
+                    
+                </div>
+            </a>
+            <a>
+                <div class="list_div hover_back">
+                    <span class="ion-power drop_menu_ico">
+                    </span>
+                    <span class=" botton_name name_option_drop">
+                        Se déconnecter
+                    </span>
+                    
+                </div>
+            </a>
+            
+            
+        </div>
+    </div>
+    
+    <div id="header_menu">
+        <div id="header_menu_center">
+            <div onclick="show_slid_menu()" id="div_small_menu">
+                <div class="icon_drop hover_back">
+                    <div class="icon_div">
+                        <span class="ion-navicon span_icon">
+                        </span>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="header_logo-container">
+                <a id="header_link_img" href="#"><img id="web-logo" src="image/49705989_2292097084158504_2734803752664956928_n.png"> </a>
+            </div>
+            <div id="header_left" class="sides_div">
+                <div class="dropbutton for_display_drop">
+                    <div class="child_container hover_back">
+                        <div class="botton">
+                            <span id="logo_item" class="ion-grid logo_item">
+                            </span>
+                            <div class="botton_name">Pages</div>
+                        </div>
+                    </div>
+                    <div class="drop_menu" id="first_drop">
+                        <a href="accueil.php">
+                            <div class="list_div hover_back">
+                                <span class="ion-home drop_menu_ico">
+                                </span>
+                                <span class=" botton_name name_option_drop">
+                                    Accueil
+                                </span>
+                                
+                            </div>
+                        </a>
+                        <a href="georefer.php">
+                            <div class="list_div hover_back">
+                                <span class="ion-code drop_menu_ico">
+                                </span>
+                                <span class=" botton_name name_option_drop">
+                                    Projet
+                                </span>
+                                
+                            </div>
+                        </a>
+                        
+                        <div class="triangle">
+                        </div>
+                    </div>
+                </div>
+                <div id="main_div_for_search">
+                    <div class="search_div">
+                        <div class="height100">
+                            <form class="height100 searchbox">
+                                <div id="" class="width100 form_div">
+                                    <span class="height100 width100 span_form" id="">
+                                        <input id="" class="input_s" type="text" name="menusearch" autocomplete="off" maxlength="200" placeholder="Search...">
+                                            <span id="" class="sp-btn">
+                                                <button type="submit" id="" class="ion-search btn-search"></button>
+                                            </span>
+                                            </span>
                                 </div>
-                                <!-- /.container-fluid -->
-                            </nav>
-                            <!-- /.navbar -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div id="header_right">
+                <div id="link_contact" class="dropbutton">
+                    <div class="child_container hover_back">
+                        <div class="botton">
+                            <span id="logo_item" class="ion-android-contacts logo_item">
+                            </span>
+                            <div class="botton_name">Contact
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="icon_drop hover_back ico_1000 for_display_drop">
+                    <div class="icon_div">
+                        <span class="ion-ios-bell-outline span_icon">
+                        </span>
+                        <div class="number_of_data">
+                            +99
+                        </div>
+                    </div>
+                    <div class="drop_menu drop_for_icon" id="first_drop_icon">
+                        <div class="triangle triangle_for_ico">
+                        </div>
+                    </div>
+                </div>
+                <div class="icon_drop hover_back ico_1000 for_display_drop">
+                    <div class="icon_div">
+                        <span class="ion-ios-chatbubble-outline span_icon">
+                        </span>
+                        <div class="number_of_data">
+                            +99
+                        </div>
+                    </div>
+                    <div class="drop_menu  drop_for_icon">
+                        <div class="triangle triangle_for_ico">
+                        </div>
+                    </div>
+                </div>
+                <div class="icon_drop hover_back  ico_1000 for_display_drop">
+                    <div class="icon_div" id="logo_favorites">
+                        <span class="ion-ios-heart-outline span_icon">
+                        </span>
+                        <div class="number_of_data">
+                            +99
+                        </div>
+                    </div>
+                    <div class="drop_menu  drop_for_icon favoris_drop">
+                        <div class="triangle triangle_favoris triangle_for_ico">
+                        </div>
+                    </div>
+                </div>
+                <div id="img_user_div" class="for_display_drop">
+                    
+                    <div id="img_user_div" class="for_display_drop">
+                        
+                        <div style="
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 50%;
+                            border: 1px #f2f3f5 solid;display: flex;justify-content: center;align-content: center;"><span class="button_name" style="
+                                display: flex;align-items: center;">
+                                AH
+                            </span></div>
+                        
+                        <div class="drop_menu   user_drop">
                             
-                            <!-- Page Content -->
-                            <div class="container-fluid">
+                            <a>
+                                <div id="main_drop_data_user" class="list_div hover_back">
+                                    <div id="div_abr_name">
+                                        <span id="span_abr_name" class="button_name">
+                                            AH
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span id="name_user" class="botton_name">
+                                            Aourass Hamza
+                                        </span>
+                                        <span id="user_e-mail" class="botton_name">
+                                            hamza199738@gmail.com
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a>
+                                <div class="list_div hover_back ico_1000_drop">
+                                    <span class="ion-ios-bell drop_menu_ico">
+                                    </span>
+                                    <span class=" botton_name name_option_drop">
+                                        Notification
+                                    </span>
+                                    <div class="drop_number_data">
+                                        +99
+                                    </div>
+                                </div>
+                            </a>
+                            <a>
+                                <div class="list_div hover_back ico_1000_drop">
+                                    <span class="ion-heart drop_menu_ico">
+                                    </span>
+                                    <span class=" botton_name name_option_drop">
+                                        Favoris
+                                    </span>
+                                    <div class="drop_number_data">
+                                        +99
+                                    </div>
+                                </div>
+                            </a>
+                            <a>
+                                <div class="list_div hover_back ico_1000_drop">
+                                    <span class="ion-chatboxes drop_menu_ico">
+                                    </span>
+                                    <span class=" botton_name name_option_drop">
+                                        Messages
+                                    </span>
+                                    <div class="drop_number_data">
+                                        +99
+                                    </div>
+                                </div>
+                            </a>
+                            <a>
+                                <div class="list_div hover_back">
+                                    <span class="ion-help-circled drop_menu_ico">
+                                    </span>
+                                    <span class=" botton_name name_option_drop">
+                                        Aide
+                                    </span>
+                                </div>
+                            </a>
+                            <a>
+                                <div id="link_contact_drop" class="list_div hover_back ">
+                                    <span class="ion-android-contacts drop_menu_ico">
+                                    </span>
+                                    <span class=" botton_name name_option_drop">
+                                        Contact
+                                    </span>
+                                </div>
+                            </a>
+                            <a>
+                                <div class="list_div hover_back">
+                                    <span class="ion-gear-a drop_menu_ico">
+                                    </span>
+                                    <span class=" botton_name name_option_drop">
+                                        Parametre
+                                    </span>
+                                    
+                                </div>
+                            </a>
+                            <a>
+                                <div class="list_div hover_back">
+                                    <span class="ion-power drop_menu_ico">
+                                    </span>
+                                    <span class=" botton_name name_option_drop">
+                                        Se déconnecter
+                                    </span>
+                                    
+                                </div>
+                            </a>
+                            
+                            
+                            <div class="triangle  triangle_user">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="drop_menu   user_drop">
+                        
+                        <a>
+                            <div id="main_drop_data_user" class="list_div hover_back">
+                                <div id="div_abr_name">
+                                    <span id="span_abr_name" class="button_name">
+                                        AH
+                                    </span>
+                                </div>
+                                <div>
+                                    <span id="name_user" class="botton_name">
+                                        Aourass Hamza
+                                    </span>
+                                    <span id="user_e-mail" class="botton_name">
+                                        hamza199738@gmail.com
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                        <a>
+                            <div class="list_div hover_back ico_1000_drop">
+                                <span class="ion-ios-bell drop_menu_ico">
+                                </span>
+                                <span class=" botton_name name_option_drop">
+                                    Notification
+                                </span>
+                                <div class="drop_number_data">
+                                    +99
+                                </div>
+                            </div>
+                        </a>
+                        <a>
+                            <div class="list_div hover_back ico_1000_drop">
+                                <span class="ion-heart drop_menu_ico">
+                                </span>
+                                <span class=" botton_name name_option_drop">
+                                    Favoris
+                                </span>
+                                <div class="drop_number_data">
+                                    +99
+                                </div>
+                            </div>
+                        </a>
+                        <a>
+                            <div class="list_div hover_back ico_1000_drop">
+                                <span class="ion-chatboxes drop_menu_ico">
+                                </span>
+                                <span class=" botton_name name_option_drop">
+                                    Messages
+                                </span>
+                                <div class="drop_number_data">
+                                    +99
+                                </div>
+                            </div>
+                        </a>
+                        <a>
+                            <div class="list_div hover_back">
+                                <span class="ion-help-circled drop_menu_ico">
+                                </span>
+                                <span class=" botton_name name_option_drop">
+                                    Aide
+                                </span>
+                            </div>
+                        </a>
+                        <a>
+                            <div id="link_contact_drop" class="list_div hover_back ">
+                                <span class="ion-android-contacts drop_menu_ico">
+                                </span>
+                                <span class=" botton_name name_option_drop">
+                                    Contact
+                                </span>
+                            </div>
+                        </a>
+                        <a>
+                            <div class="list_div hover_back">
+                                <span class="ion-gear-a drop_menu_ico">
+                                </span>
+                                <span class=" botton_name name_option_drop">
+                                    Parametre
+                                </span>
+                                
+                            </div>
+                        </a>
+                        <a>
+                            <div class="list_div hover_back">
+                                <span class="ion-power drop_menu_ico">
+                                </span>
+                                <span class=" botton_name name_option_drop">
+                                    Se déconnecter
+                                </span>
+                                
+                            </div>
+                        </a>
+                        
+                        
+                        <div class="triangle  triangle_user">
+                        </div>
+                    </div>
+                </div>
+                <div id="small_screen_search" onclick="toggle_effect('#under_menu')" class="icon_drop hover_back">
+                    <div class="icon_div">
+                        <span class="ion-search span_icon">
+                        </span>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div id="under_menu">
+            <div id="main_div_small_search">
+                <div class="search_div">
+                    <div class="height100">
+                        <form class="height100 searchbox">
+                            <div id="" class="width100 form_div">
+                                <span class="height100 width100 span_form" id="">
+                                    <input id="" class="input_s" type="text" name="menusearch" autocomplete="off" maxlength="200" placeholder="Search...">
+                                        <span id="" class="sp-btn">
+                                            <button type="submit" id="" class="ion-search btn-search"></button>
+                                        </span>
+                                        </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-sm-8 col-sm-push-4">
                                         <div class="page-header">
@@ -96,8 +556,8 @@
                                         
                                         
                                         <% for (Commentaire c : ListC) {%>
-										    
-										    <div class="well">
+                                            
+                                            <div class="well">
                                             <div class="media">
                                                 <div class="media-left" style="
                                                     width: 70px !important;">
@@ -112,22 +572,22 @@
                                                         <span class="glyphicon glyphicon-thumbs-up"></span> Upvote
                                                     </button>
                                                     <%=c.getUpvotes() %> likes<br>
-													
-													<% if(c.getUtilisateur().getIdEtudiant()==(idblogbyrequest)){
-														out.println("<a href='/SimpleProjectJEE/HideComment?idcomment="+c.getIdCommentaire()+"'>Delete Comment</a>");
-														}
-														%>
-													
-													
                                                     
-                                                    	
+                                                    <% if(c.getUtilisateur().getIdEtudiant()==(idblogbyrequest)){
+                                                        out.println("<a href='/SimpleProjectJEE/HideComment?idcomment="+c.getIdCommentaire()+"'>Delete Comment</a>");
+                                                        }
+                                                        %>
+                                                    
+                                                    
+                                                    
+                                                        
                                                     </p>
                                                      
                                                     
                                                 </div>
                                             </div>
-                                       	 </div>
-										<%} %>
+                                         </div>
+                                        <%} %>
                                         
                                         
                                         
@@ -260,13 +720,16 @@
                                 
                                 
                                 <!-- JQuery scripts -->
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                            
-                            
-                            
-        </body></html>
+  
+    
+    <script src="js/menu.js"></script>
+    <script>
+        
+        </script>
+    
+    
+    
+    
+    
+    
+</body></html>
