@@ -31,6 +31,8 @@ public class Utilisateur implements Serializable {
 	private String motdepass;
 	
 	private String gender;
+	
+	private String token;
 
 	public Utilisateur() {
 	}
@@ -120,6 +122,14 @@ public class Utilisateur implements Serializable {
 		return "Utilisateur [idEtudiant=" + idEtudiant + ", dateN=" + dateN + ", email=" + email + ", nom=" + nom
 				+ ", prenom=" + prenom + ", type=" + type + ", verify=" + verify + ", motdepass=" + motdepass
 				+ ", gender=" + gender + "]";
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 	
 	

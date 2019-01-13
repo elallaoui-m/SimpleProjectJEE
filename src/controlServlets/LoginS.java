@@ -49,9 +49,10 @@ public class LoginS extends HttpServlet {
 		String user = request.getParameter("email");
 		if(checkInfo(user,pass))
 		{
-			if(Us.getVerify().equals("No"))
+			if(Us.getVerify().equals("no"))
 			{
-				request.getRequestDispatcher("Login.jsp?verify=false").forward(request, response);
+				request.getRequestDispatcher("Login.jsp?verify=no").forward(request, response);
+				System.out.println("He said no");
 				
 			}
 			

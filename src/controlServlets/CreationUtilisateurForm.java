@@ -2,6 +2,8 @@ package controlServlets;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,6 +19,7 @@ public class CreationUtilisateurForm {
     private static final String CHAMP_PASSWORD    = "pass";
     private static final String CHAMP_CONFPASSWORD   = "confirm";
     private static final String CHAMP_GENDER   = "gender";
+    
 	
     private String resultat;	
     private Map<String, String> erreurs= new HashMap<String, String>();
@@ -58,10 +61,11 @@ public class CreationUtilisateurForm {
         String year = getValeurChamp( request, CHAMP_YEAR );
         String password = getValeurChamp( request, CHAMP_PASSWORD );
         String repassword = getValeurChamp( request, CHAMP_CONFPASSWORD );
+        String token =  (String) request.getAttribute("token");
         
         
     	
-        String verify = "yes";
+        String verify = "no";
         
         
         
@@ -79,6 +83,9 @@ public class CreationUtilisateurForm {
         
         utlisateur.setGender(gender);
         utlisateur.setVerify(verify);
+        
+        
+        utlisateur.setToken(token);
       
         impUser.CreateUtilis( utlisateur );
     	
@@ -189,5 +196,8 @@ private void traiterpassword(String pass,String repass,  Utilisateur user ) {
             private void setErreur( String champ, String message ) {
                 erreurs.put( champ, message );
             }
+            
+            
+    
 
 }

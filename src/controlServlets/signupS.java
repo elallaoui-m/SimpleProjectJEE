@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,6 +20,8 @@ public class signupS extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ImplUtilisateur impuser= new ImplUtilisateur();
 	CreationUtilisateurForm uss=new CreationUtilisateurForm(impuser);
+	String token;
+	String errorr = "yes";
 	
 	
     /**
@@ -49,6 +52,9 @@ public class signupS extends HttpServlet {
 		}
 		else
 		{
+			RandomString gen = new RandomString(8, ThreadLocalRandom.current());
+	        token = gen.nextString();
+	        request.setAttribute("token",token);
 			uss.creerUser(request);
 			error = uss.getErreurs();
 			System.out.println(error);
@@ -61,15 +67,21 @@ public class signupS extends HttpServlet {
 			}
 			else
 			{
-				request.setAttribute("error","false");
+				
+				us = (new ImplUtilisateur()).searchebyEmail(s);
+				SendMail.sendEmail(us.getEmail(), token, String.valueOf(us.getIdEtudiant()));
+				//request.setAttribute("error","no");
+				errorr = "no";
+				
+				//request.setAttribute("msg", "your account is created with success<br>check your email to activate your email!");
 				
 			}
 			System.out.println("in");
-			//response.sendRedirect("/SimpleProjectJEE/inscription.jsp");
+			response.sendRedirect("/SimpleProjectJEE/incription.jsp?error="+errorr);
 			
 		}
 		
-		request.getRequestDispatcher("/incription.jsp").forward(request, response);
+		//request.getRequestDispatcher("/incription.jsp").forward(request, response);
 		//request.getRequestDispatcher("/SimpleProjectJEE/Login.jsp").forward(request, response);
 		
 	}

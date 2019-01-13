@@ -308,7 +308,7 @@
                             border-radius: 50%;
                             border: 1px #f2f3f5 solid;display: flex;justify-content: center;align-content: center;"><span class="button_name" style="
                                 display: flex;align-items: center;">
-                                AH
+                                <%= us.getNom().substring(0,1).toUpperCase()+us.getPrenom().substring(0,1).toUpperCase() %>
                             </span></div>
                         
                         <div class="drop_menu   user_drop">
@@ -317,7 +317,7 @@
                                 <div id="main_drop_data_user" class="list_div hover_back">
                                     <div id="div_abr_name">
                                         <span id="span_abr_name" class="button_name">
-                                            <%= us.getNom().charAt(0)+us.getPrenom().charAt(0) %>
+                                            <%= us.getNom().substring(0,1).toUpperCase()+us.getPrenom().substring(0,1).toUpperCase() %>
                                         </span>
                                     </div>
                                     <div>
@@ -429,7 +429,7 @@
                             <div id="main_drop_data_user" class="list_div hover_back">
                                 <div id="div_abr_name">
                                     <span id="span_abr_name" class="button_name">
-                                        <%= us.getNom().charAt(0)+us.getPrenom().charAt(0) %>
+                                        <%= us.getNom().substring(0,1).toUpperCase()+us.getPrenom().substring(0,1).toUpperCase() %>
                                     </span>
                                 </div>
                                 <div>
@@ -506,7 +506,7 @@
                                 
                             </div>
                         </a>
-                        <a href="simpleProjectJEE/LogoutS">
+                        <a href="/SimpleProjectJEE/LogoutS">
                             <div class="list_div hover_back">
                                 <span class="ion-power drop_menu_ico">
                                 </span>

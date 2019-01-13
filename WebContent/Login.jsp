@@ -2,7 +2,18 @@
     pageEncoding="UTF-8"%>
       <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
+    <%@page import="controlServlets.Utilisateur" %>
 <%@ page errorPage="ifError.jsp" %>
+
+<%
+
+Utilisateur us = (Utilisateur) request.getSession(false).getAttribute("Myuser");
+	if(us != null && us.getEmail() != null)
+	{
+		request.getRequestDispatcher("/HomePageS").forward(request,response);
+	}
+
+%>
 
 
 
@@ -86,10 +97,18 @@
 	    					</div>
 						  </c:when>
 						  
-						 <c:when test="${not empty param.verify && param.verify=='flase'}">
+						 <c:when test="${not empty param.verify && param.verify=='no'}">
 							<div class='container-login100-form-btn p-t-25  text-center'>
 								<div class="alert alert-success" role="warning">
   									<fmt:message key = "message.verify"/>
+								</div>
+	    					</div>
+						  </c:when>
+						  
+						  <c:when test="${not empty requestScope.verifyError && requestScope.verifyError =='true'}">
+							<div class='container-login100-form-btn p-t-25  text-center'>
+								<div class="alert alert-success" role="warning">
+  									<fmt:message key = "message.VerifyError"/>
 								</div>
 	    					</div>
 						  </c:when> 
@@ -123,7 +142,7 @@
 								<fmt:message key = "message.notMember"/>
 						</span>
 
-						<a class="txt1 bo1 hov1" href="inscription.jsp">
+						<a class="txt1 bo1 hov1" href="incription.jsp">
 						<fmt:message key = "message.notMemberIncr"/>					
 						</a>
 					</div>

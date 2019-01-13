@@ -8,6 +8,7 @@
 
 <%
 	Map<String,String> errorlst = (Map<String,String>)request.getAttribute("errorList");
+	
 %>
 
 
@@ -66,10 +67,10 @@
 								</div>
 	    					</div>
 						  </c:when>
-						  <c:when test="${not empty requestScope.error && requestScope.error=='false'}">
+						  <c:when test="${not empty requestScope.error && requestScope.error=='no'}">
 							<div class='container-login100-form-btn p-t-25  text-center'>
 								<div class="alert alert-success" role="alert">
-  									Registration completed with success
+  									Registration completed with success <br> check you email to activate your account<br>
   									<a href="Login.jsp" class="btn btn-lg btn-primary" role="button" aria-pressed="true">Go Home</a>
 								</div>
 	    					</div>
@@ -137,7 +138,7 @@
                                 </div>
                         </div>
                         
-                        <p class="para-email ">Your birth day </p>
+                        <p class="para-email "><fmt:message key = "message.birthDay"/> </p>
                         <div class="div-error m-b-10">
                             <p class="invalid" id="invalid-date"></p>
                         </div>
@@ -150,14 +151,14 @@
                             <input class="input100 pass-" type="password" id="password" name="pass" placeholder=" ">
                                
                                 <span class="focus-input100">
-                                    <label for="fullname" class="float-lable">Password</label>
+                                    <label for="fullname" class="float-lable"><fmt:message key = "message.password"/></label>
                                 </span>
                                 </div>
                         <div class="wrap-input100  m-r-8" data-validate = "Password is required">
                             <input class="input100 pass-" id="confirm" type="password" name="confirm" placeholder=" ">
                                 
                                 <span class="focus-input100">
-                                    <label for="fullname" class="float-lable">Confirm</label>
+                                    <label for="fullname" class="float-lable"><fmt:message key = "message.confirm"/></label>
                                 </span>
                                 </div>
                         <span>
@@ -171,16 +172,16 @@
                         
                         <div class="container-login100-form-btn p-t-25">
                             <button class="login100-form-btn">
-                               Sign up
+                              <fmt:message key = "message.createAccount"/>
                             </button>
                         </div>
                         <div class="text-center w-full p-t-40">
                             <span class="txt1">
-                                Are you a member?
+                                <fmt:message key = "message.youAreMember"/>
                             </span>
                             
                             <a class="txt1 bo1 hov1" href="Login.jsp">
-                                Sign in now
+                                <fmt:message key = "message.signIn"/>
                             </a>
                         </div>
                     </form>
