@@ -111,6 +111,16 @@ Utilisateur us = (Utilisateur) request.getSession(false).getAttribute("Myuser");
   									<fmt:message key = "message.VerifyError"/>
 								</div>
 	    					</div>
+	    					
+	    					
+						  </c:when>
+						  
+						  <c:when test="${not empty param.error && param.error=='no'}">
+							<div class='container-login100-form-btn p-t-25  text-center'>
+								<div class="alert alert-success" role="success">
+  									Registration completed with success <br> check you email to activate your account<br>
+								</div>
+	    					</div>
 						  </c:when> 
 						 
 

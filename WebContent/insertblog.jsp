@@ -165,7 +165,7 @@
                     </span>
                 </div>
             </a>
-            <a href="Editincription.jsp">
+            <a href="Editincription.jsp" <%if(us.getVerify().equals("yesG")) out.print("class='isDisabled'"); %>>
                 <div class="list_div hover_back">
                     <span class="ion-gear-a drop_menu_ico">
                     </span>
@@ -507,7 +507,7 @@
                                 </span>
                             </div>
                         </a>
-                        <a href="Editincription.jsp">
+                        <a href="Editincription.jsp" <%if(us.getVerify().equals("yesG")) out.print("class='isDisabled'"); %>>
                             <div class="list_div hover_back">
                                 <span class="ion-gear-a drop_menu_ico">
                                 </span>
@@ -566,7 +566,7 @@
 
     
 <div class="contact-clean">
-        <form method="post" class="contact2-form validate-form">
+        <form method="post" class="contact2-form validate-form" action="/SimpleProjectJEE/CreationBlogS">
             <h2 class="text-center">New Blog</h2>
 				<div class="wrap-input2 validate-input" data-validate="Titre is required">
 					<input class="input2" type="text" name="name">

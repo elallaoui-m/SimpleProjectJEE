@@ -20,7 +20,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Mehdi/Downloads/javax.mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Mehdi/Downloads/javax.mail.jar" sourcepath="C:/Users/Mehdi/AppData/Local/Temp/.org.sf.feeling.decompiler1547386378633/source/javax.mail-1.6.2-sources.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EclipseLink 2.5.2">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>

@@ -67,14 +67,7 @@
 								</div>
 	    					</div>
 						  </c:when>
-						  <c:when test="${not empty requestScope.error && requestScope.error=='no'}">
-							<div class='container-login100-form-btn p-t-25  text-center'>
-								<div class="alert alert-success" role="alert">
-  									Registration completed with success <br> check you email to activate your account<br>
-  									<a href="Login.jsp" class="btn btn-lg btn-primary" role="button" aria-pressed="true">Go Home</a>
-								</div>
-	    					</div>
-						  </c:when>
+						  
 						  <c:otherwise>
 						    
 						  </c:otherwise>

@@ -29,6 +29,16 @@
     <meta charset="UTF-8">
         
         <link rel="stylesheet" href="css\notification.css">
+        <style type="text/css">
+        
+        	.isDisabled {
+  			color: currentColor;
+  			cursor: not-allowed;
+  			opacity: 0.5;
+  			text-decoration: none;
+			}
+        
+        </style>
             
             <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
             <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
@@ -154,7 +164,7 @@
                     </span>
                 </div>
             </a>
-            <a href="Editincription.jsp">
+            <a href="Editincription.jsp" <%if(us.getVerify().equals("yesG")) out.print("class='isDisabled'"); %>>
                 <div class="list_div hover_back">
                     <span class="ion-gear-a drop_menu_ico">
                     </span>
@@ -496,7 +506,7 @@
                                 </span>
                             </div>
                         </a>
-                        <a href="Editincription.jsp">
+                        <a href="Editincription.jsp" <%if(us.getVerify().equals("yesG")) out.print("class='isDisabled'"); %>>
                             <div class="list_div hover_back">
                                 <span class="ion-gear-a drop_menu_ico">
                                 </span>
@@ -563,7 +573,7 @@
         <div class="col-md-8">
 
           <h1 class="my-4"><fmt:message key = "message.allQuestion"/>
-            <small><fmt:message key = "message.new"/></small>
+            <small><a href="insertblog.jsp"><fmt:message key = "message.new"/></a></small>
           </h1>
 
           <!-- Blog Post -->
@@ -593,12 +603,13 @@
               <%
                 if(b.getUtilisateur().getIdEtudiant() == ((Utilisateur)(request.getSession().getAttribute("Myuser"))).getIdEtudiant()  )
                 {
-                    
+                	
                 
               %>
-              <a href="Editincription.jsp">
+              <a href=<%="Editblog.jsp?idB="+b.getIdBlog() %>>
                 <i class="fa fa-edit"></i>
-              Edit </a><a href="Editincription.jsp">
+              Edit </a>
+              <a href=<%="DeleteBlogS?idB="+b.getIdBlog() %>>
               <i class="fa fa-trash"></i>
               Delete </a>
               

@@ -8,8 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 
 public class CreationBlogForm {
 	private static final String CHAMP_TITRE       = "name";
+	private static final String CHAMP_ETITLE       = "Etitre";
     private static final String CHAMP_DESCRIPTION    = "message";
+    private static final String CHAMP_EMESSAGE    = "Emessage";
+    
     private static final String CHAMP_INTRO    = "email";
+    private static final String CHAMP_EINTRO    = "Eemail";
     
     
     private String              resultat;
@@ -35,6 +39,41 @@ public class CreationBlogForm {
     public String getResultat() {
         return resultat;
     }
+    
+    public Blog UpdateBlog(HttpServletRequest request,int id)
+    {   
+    	String titre = getValeurChamp( request, CHAMP_ETITLE );
+        String description = getValeurChamp( request, CHAMP_EMESSAGE );
+        String intro = getValeurChamp( request, CHAMP_EINTRO );
+    	
+    	Blog blog =impBlog.FindBlog(id);
+    	Blog upblog=new Blog();
+    	
+    	//String intro=blog.getIntro();
+    	String date=blog.getDateBlog();
+    	
+    	upblog.setIntro(intro);
+    	upblog.setDateBlog(date);
+    	if(titre.equals(null) && titre.isEmpty() ) 
+    		{setErreur("Utit","titre empty");
+    		resultat = "titre empty";}
+    	
+    	else traiterTitre( titre, upblog );
+    	
+    	if(description.equals(null) && description.isEmpty() )  
+    		{setErreur("Udes","Message is empty");
+    		resultat = "desc empty";}
+    	else traiterDescription( description, upblog );
+    	
+         
+         
+         impBlog.UpdateBlog(id, upblog);
+         System.out.println("blog bien modifier");
+    	
+    	return blog;
+    }
+    
+    
     public Blog CreerBlog( HttpServletRequest request ) {
         String titre = getValeurChamp( request, CHAMP_TITRE );
         String description = getValeurChamp( request, CHAMP_DESCRIPTION );

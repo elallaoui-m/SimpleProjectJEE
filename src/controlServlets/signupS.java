@@ -77,7 +77,7 @@ public class signupS extends HttpServlet {
 				
 			}
 			System.out.println("in");
-			response.sendRedirect("/SimpleProjectJEE/incription.jsp?error="+errorr);
+			response.sendRedirect("/SimpleProjectJEE/Login.jsp?error="+errorr);
 			
 		}
 		

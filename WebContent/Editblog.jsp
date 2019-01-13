@@ -3,12 +3,14 @@
       <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
     
-<%@page import="controlServlets.Blog,controlServlets.Commentaire,java.util.List,controlServlets.Utilisateur,java.util.*" %>
+<%@page import="controlServlets.Blog,java.util.List,controlServlets.Utilisateur,java.util.*" %>
+<%@page import="controlServlets.ImpBlog" %>
 <%@ page errorPage="ifError.jsp" %>
 <%
-    Blog myBlog = (Blog)request.getAttribute("blog");
-    List<Commentaire> ListC = (List<Commentaire>) request.getAttribute("comments");
-    int idblogbyrequest =(int)request.getSession().getAttribute("id");
+    Blog myBlog = (new ImpBlog()).FindBlog(Integer.parseInt(request.getParameter("idB")));
+    //List<Commentaire> ListC = (List<Commentaire>) request.getAttribute("comments");
+    //int idblogbyrequest =(int)request.getSession().getAttribute("id");
+    
     
     Utilisateur us = (Utilisateur) request.getSession(false).getAttribute("Myuser");
 	if(us == null || us.getEmail()==null)
@@ -16,6 +18,8 @@
 		response.sendRedirect("error.jsp");
 		System.out.println("error");
 	}
+	
+	
 	
 	Random rand = new Random();
 	int n = rand.nextInt(11);
@@ -165,7 +169,7 @@
                     </span>
                 </div>
             </a>
-            <a href="Editincription.jsp">
+            <a href="Editincription.jsp" <%if(us.getVerify().equals("yesG")) out.print("class='isDisabled'"); %>>
                 <div class="list_div hover_back">
                     <span class="ion-gear-a drop_menu_ico">
                     </span>
@@ -507,7 +511,7 @@
                                 </span>
                             </div>
                         </a>
-                        <a href="Editincription.jsp">
+                        <a href="Editincription.jsp" <%if(us.getVerify().equals("yesG")) out.print("class='isDisabled'"); %>>
                             <div class="list_div hover_back">
                                 <span class="ion-gear-a drop_menu_ico">
                                 </span>
@@ -566,23 +570,23 @@
 
     
 <div class="contact-clean">
-        <form method="post" class="contact2-form validate-form">
+        <form method="post" class="contact2-form validate-form" action="/SimpleProjectJEE/EditeBlogS">
             <h2 class="text-center">New Blog</h2>
 				<div class="wrap-input2 validate-input" data-validate="Titre is required">
-					<input class="input2" type="text" name="name">
+					<input class="input2" type="text" name="Etitre" value="<%=myBlog.getTitre()%>">
 					<span class="focus-input2" data-placeholder="TITRE"></span>
 				</div>
 
 				<div class="wrap-input2 validate-input" data-validate = "Introduction is required">
-					<input class="input2" type="text" name="email">
+					<input class="input2" type="text" name="Eemail" value="<%=myBlog.getIntro()%>" >
 					<span class="focus-input2" data-placeholder="INTRODUCTION"></span>
 				</div>
 
 				<div class="wrap-input2 validate-input" data-validate = "Blog is required">
-					<textarea class="input2" name="message"></textarea>
+					<textarea class="input2" name="Emessage" value="<%=myBlog.getDescription()%>"></textarea>
 					<span class="focus-input2" data-placeholder="BLOG"></span>
 				</div>
-            <div class="form-group"><button class="btn btn-primary" type="submit">Add Blog </button></div>
+            <div class="form-group"><button class="btn btn-primary" type="submit">Edit Blog </button></div>
         </form>
     </div>
     

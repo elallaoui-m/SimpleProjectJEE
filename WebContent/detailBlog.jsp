@@ -154,7 +154,7 @@
                     </span>
                 </div>
             </a>
-            <a href="Editincription.jsp">
+            <a href="Editincription.jsp" <%if(us.getVerify().equals("yesG")) out.print("class='isDisabled'"); %>>
                 <div class="list_div hover_back">
                     <span class="ion-gear-a drop_menu_ico">
                     </span>
@@ -308,7 +308,7 @@
                             border-radius: 50%;
                             border: 1px #f2f3f5 solid;display: flex;justify-content: center;align-content: center;"><span class="button_name" style="
                                 display: flex;align-items: center;">
-                                AH
+                                <%= us.getNom().substring(0,1)+us.getPrenom().substring(0,1) %>
                             </span></div>
                         
                         <div class="drop_menu   user_drop">
@@ -317,7 +317,7 @@
                                 <div id="main_drop_data_user" class="list_div hover_back">
                                     <div id="div_abr_name">
                                         <span id="span_abr_name" class="button_name">
-                                            <%= us.getNom().charAt(0)+us.getPrenom().charAt(0) %>
+                                            <%= us.getNom().substring(0,1)+us.getPrenom().substring(0,1) %>
                                         </span>
                                     </div>
                                     <div>
@@ -429,12 +429,12 @@
                             <div id="main_drop_data_user" class="list_div hover_back">
                                 <div id="div_abr_name">
                                     <span id="span_abr_name" class="button_name">
-                                        <%= us.getNom().charAt(0)+us.getPrenom().charAt(0) %>
+                                        <%= us.getNom().substring(0,1)+us.getPrenom().substring(0,1) %>
                                     </span>
                                 </div>
                                 <div>
                                     <span id="name_user" class="botton_name">
-                                        <%= us.getNom()+" "+us.getPrenom() %>
+                                        <%= us.getNom().substring(0,1)+us.getPrenom().substring(0,1) %>
                                     </span>
                                     <span id="user_e-mail" class="botton_name">
                                         <%= us.getEmail() %>
@@ -496,7 +496,7 @@
                                 </span>
                             </div>
                         </a>
-                        <a href="Editincription.jsp">
+                        <a href="Editincription.jsp" <%if(us.getVerify().equals("yesG")) out.print("class='isDisabled'"); %>>
                             <div class="list_div hover_back">
                                 <span class="ion-gear-a drop_menu_ico">
                                 </span>
@@ -701,7 +701,7 @@
                                                                             Overview </a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="Editincription.jsp">
+                                                                        <a href="Editincription.jsp" <%if(us.getVerify().equals("yesG")) out.print("class='isDisabled'"); %>>
                                                                             <i class="glyphicon glyphicon-user"></i>
                                                                             Account Settings </a>
                                                                     </li>
