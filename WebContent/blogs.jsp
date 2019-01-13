@@ -20,8 +20,11 @@
 	int l = rand.nextInt(11);
 %>
 
+<c:if test = "${param.rg == 'fr'}"><fmt:setLocale value = 'fr'/></c:if>
+<c:if test = "${param.rg != 'fr'}"><fmt:setLocale value = 'en'/></c:if>
 
-<fmt:setLocale value = "en"/>
+
+<%-- <fmt:setLocale value = "en"/> --%>
 <fmt:setBundle basename = "ressources.message" />
 
 <!DOCTYPE html>
@@ -179,7 +182,7 @@
                     <span class="ion-power drop_menu_ico">
                     </span>
                     <span class=" botton_name name_option_drop">
-                        Logout
+                        <fmt:message key = "message.logoutWord"/>
                     </span>
                     
                 </div>
@@ -245,7 +248,7 @@
                             <form class="height100 searchbox">
                                 <div id="" class="width100 form_div">
                                     <span class="height100 width100 span_form" id="">
-                                        <input id="" class="input_s" type="text" name="menusearch" autocomplete="off" maxlength="200" placeholder="Search...">
+                                        <input id="" class="input_s" type="text" name="menusearch" autocomplete="off" maxlength="200" placeholder="<fmt:message key = "message.search"/>">
                                             <span id="" class="sp-btn">
                                                 <button type="submit" id="" class="ion-search btn-search"></button>
                                             </span>
@@ -421,7 +424,7 @@
                                     <span class="ion-power drop_menu_ico">
                                     </span>
                                     <span class=" botton_name name_option_drop">
-                                        Logout
+                                       <fmt:message key = "message.logoutWord"/>
                                     </span>
                                     
                                 </div>
@@ -521,7 +524,7 @@
                                 <span class="ion-power drop_menu_ico">
                                 </span>
                                 <span class=" botton_name name_option_drop">
-                                    Logout
+                                    <fmt:message key = "message.logoutWord"/>
                                 </span>
                                 
                             </div>
@@ -549,7 +552,7 @@
                         <form class="height100 searchbox">
                             <div id="" class="width100 form_div">
                                 <span class="height100 width100 span_form" id="">
-                                    <input id="" class="input_s" type="text" name="menusearch" autocomplete="off" maxlength="200" placeholder="Search...">
+                                    <input id="" class="input_s" type="text" name="menusearch" autocomplete="off" maxlength="200" placeholder="<fmt:message key = "message.search"/>">
                                         <span id="" class="sp-btn">
                                             <button type="submit" id="" class="ion-search btn-search"></button>
                                         </span>
@@ -594,10 +597,10 @@
             <div class="card-body">
               <h2 class="card-title"><%= b.getTitre() %></h2>
               <p class="card-text"><%= b.getIntro() %></p>
-              <a href=<%="/SimpleProjectJEE/InvocBlogS?idblog="+b.getIdBlog() %> class="btn btn-primary">Read More &rarr;</a>
+              <a href=<%="/SimpleProjectJEE/InvocBlogS?idblog="+b.getIdBlog() %> class="btn btn-primary"><fmt:message key = "message.read"/> &rarr;</a>
             </div>
             <div class="card-footer text-muted">
-              Posted on <%= b.getDateBlog() %>
+              <fmt:message key = "message.posted"/> <%= b.getDateBlog() %>
               <a><%=b.getUtilisateur().getNom() %></a>
               
               <%
@@ -608,10 +611,10 @@
               %>
               <a href=<%="Editblog.jsp?idB="+b.getIdBlog() %>>
                 <i class="fa fa-edit"></i>
-              Edit </a>
+              <fmt:message key = "message.edit"/> </a>
               <a href=<%="DeleteBlogS?idB="+b.getIdBlog() %>>
               <i class="fa fa-trash"></i>
-              Delete </a>
+              <fmt:message key = "message.delete"/> </a>
               
               <% }%>
               
