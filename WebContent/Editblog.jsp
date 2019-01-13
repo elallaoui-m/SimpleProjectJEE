@@ -571,7 +571,7 @@
     
 <div class="contact-clean">
         <form method="post" class="contact2-form validate-form" action="/SimpleProjectJEE/EditeBlogS">
-            <h2 class="text-center">New Blog</h2>
+            <h2 class="text-center">Edit Blog</h2>
 				<div class="wrap-input2 validate-input" data-validate="Titre is required">
 					<input required class="input2" type="text" name="Etitre" value="<%=myBlog.getTitre()%>">
 					<span class="focus-input2" data-placeholder="TITRE"></span>

@@ -38,7 +38,14 @@ public class ActivateAccount extends HttpServlet {
 			us.setToken("");
 			impl.updateUtilis(Integer.parseInt(idU), us);
 		}
-		else
+		else if(us.getToken().equals("") || us == null)
+			
+		{
+			
+			
+		}
+		else 
+			
 		{
 			request.setAttribute("verifyError", "true");
 			

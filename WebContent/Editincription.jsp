@@ -73,7 +73,7 @@
                 <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
                     <form class="login100-form validate-form" methode="post"  action="<c:url value = "/EditProfileS"/>">
                         <span class="login100-form-title p-b-55">
-                            Registre
+                            Edit Profile
                         </span>
                         <c:choose>
 						  <c:when test="${not empty requestScope.wrongPass && requestScope.wrongPass=='1'}">
