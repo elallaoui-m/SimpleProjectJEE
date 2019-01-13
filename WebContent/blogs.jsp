@@ -202,7 +202,7 @@
                 </div>
             </div>
             <div id="header_logo-container">
-                <a id="header_link_img" href="#"><img id="web-logo" src="image/49705989_2292097084158504_2734803752664956928_n.png"> </a>
+                <a id="header_link_img" href="HomePageS"><img id="web-logo" src="image/49705989_2292097084158504_2734803752664956928_n.png"> </a>
             </div>
             <div id="header_left" class="sides_div">
                 <div class="dropbutton for_display_drop">
@@ -622,7 +622,7 @@
 
           <!-- Pagination -->
             <div class="row column">
-                <ul class="pagination" role="navigation" aria-label="Pagination">
+                <%-- <ul class="pagination" role="navigation" aria-label="Pagination">
                 <li class="disabled"><fmt:message key = "message.preview"/></li>
                 <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
                 <li><a href="#" aria-label="Page 2">2</a></li>
@@ -632,7 +632,7 @@
                 <li><a href="#" aria-label="Page 12">12</a></li>
                 <li><a href="#" aria-label="Page 13">13</a></li>
                 <li><a href="#" aria-label="Next page"><fmt:message key = "message.next"/></a></li>
-                </ul>
+                </ul> --%>
 
 
         <!-- Sidebar Widgets Column -->

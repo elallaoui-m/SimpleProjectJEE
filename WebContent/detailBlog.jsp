@@ -192,7 +192,7 @@
                 </div>
             </div>
             <div id="header_logo-container">
-                <a id="header_link_img" href="#"><img id="web-logo" src="image/49705989_2292097084158504_2734803752664956928_n.png"> </a>
+                <a id="header_link_img" href="HomePageS"><img id="web-logo" src="image/49705989_2292097084158504_2734803752664956928_n.png"> </a>
             </div>
             <div id="header_left" class="sides_div">
                 <div class="dropbutton for_display_drop">
@@ -506,7 +506,7 @@
                                 
                             </div>
                         </a>
-                        <a href="simpleProjectJEE/LogoutS">
+                        <a href="/SimpleProjectJEE/LogoutS">
                             <div class="list_div hover_back">
                                 <span class="ion-power drop_menu_ico">
                                 </span>
@@ -558,7 +558,21 @@
                                     <div class="col-sm-8 col-sm-push-4">
                                         <div class="page-header">
                                             <h1><%=myBlog.getTitre() %></h1>
-                                            <p>Posted by <span class="glyphicon glyphicon-user"></span> <a href="#"><%=myBlog.getUtilisateur().getNom() %></a>&nbsp;<span class="glyphicon glyphicon-time"><%=myBlog.getDateBlog() %></span> </p>
+                                            <p>Posted by <span class="glyphicon glyphicon-user"></span> <a 
+                                            <%
+                                            	if(us.getType().equals("admin"))
+                                            	{
+                                            		out.print("href='Editincription.jsp?id_par_admin="+myBlog.getUtilisateur().getIdEtudiant()+"'");
+                                            	}
+                                            	else
+                                            	{
+                                            		out.print("href='#'");
+                                            	}
+                                            
+                                            %>
+                                            
+                                            >
+                                            <%=myBlog.getUtilisateur().getNom() %></a>&nbsp;<span class="glyphicon glyphicon-time"><%=myBlog.getDateBlog() %></span> </p>
                                         </div>
                                     </div>
                                 </div>

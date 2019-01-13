@@ -43,7 +43,7 @@ public class EditProfileS extends HttpServlet {
 		System.out.println("here1");
 		if(!Us.equals(null))
 		{
-			if (Us.getMotdepass().equals(request.getParameter("Oldpass")))
+			if (Us.getMotdepass().equals(request.getParameter("Oldpass")) ||( request.getParameter("toCheck") != null && request.getParameter("toCheck").equals("byAdmin") ) )
 			{
 				System.out.println("here2");
 				Utilisateur newU = new Utilisateur();

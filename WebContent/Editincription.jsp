@@ -3,15 +3,31 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 <%@ page errorPage="ifError.jsp" %>
-<%@ page import="controlServlets.Utilisateur" %>
+<%@ page import="controlServlets.Utilisateur,controlServlets.ImplUtilisateur" %>
 
 <%
-	Utilisateur us = (Utilisateur) request.getSession().getAttribute("Myuser");
-	if(us == null || us.getEmail()==null)
+	Utilisateur usS = (Utilisateur) request.getSession().getAttribute("Myuser");
+	Utilisateur us;
+	if(usS == null || usS.getEmail()==null)
 	{
 		response.sendRedirect("error.jsp");
 		System.out.println("error");
 	}
+	
+	if(request.getParameter("id_par_admin")==null || request.getParameter("id_par_admin").isEmpty())
+	{
+		us = (Utilisateur) request.getSession().getAttribute("Myuser");
+	}
+	else
+	{
+		int id = Integer.parseInt(request.getParameter("id_par_admin"));
+		us = (new ImplUtilisateur()).FindUtilis(id);
+		
+	}
+	
+	
+	
+	
 %>
 <%-- <%Utilisateur Myuser =(Utilisateur) request.getSession().getAttribute("user"); %> --%>
 <fmt:setLocale value = "en"/>
@@ -139,6 +155,8 @@
                         </div>
                         
                         <div class="flex-password m-b-10">
+                        <c:if test="${ sessionScope.typeUser == 'user' }">
+                        
                         <div class="wrap-input100  m-r-8" data-validate="Password is required">
                             <input class="input100 pass-" type="password" id="password" name="Oldpass" placeholder=" ">
                                
@@ -146,6 +164,10 @@
                                     <label for="fullname" class="float-lable">Old pwd</label>
                                 </span>
                                 </div>
+                       
+                        
+                        </c:if>
+                        
                                 
                         <div class="wrap-input100  m-r-8" data-validate="Password is required">
                             <input class="input100 pass-" type="password" id="password" name="pass" placeholder=" ">
@@ -185,6 +207,8 @@
                                 </span>
 
                                 </div>
+                                
+                                <input type="hidden" name="toCheck" value="byAdmin">
                         
                         </c:if>
                         

@@ -203,7 +203,7 @@
                 </div>
             </div>
             <div id="header_logo-container">
-                <a id="header_link_img" href="#"><img id="web-logo" src="image/49705989_2292097084158504_2734803752664956928_n.png"> </a>
+                <a id="header_link_img" href="HomePageS"><img id="web-logo" src="image/49705989_2292097084158504_2734803752664956928_n.png"> </a>
             </div>
             <div id="header_left" class="sides_div">
                 <div class="dropbutton for_display_drop">
@@ -569,17 +569,17 @@
         <form method="post" class="contact2-form validate-form" action="/SimpleProjectJEE/CreationBlogS">
             <h2 class="text-center">New Blog</h2>
 				<div class="wrap-input2 validate-input" data-validate="Titre is required">
-					<input class="input2" type="text" name="name">
+					<input required class="input2" type="text" name="name">
 					<span class="focus-input2" data-placeholder="TITRE"></span>
 				</div>
 
 				<div class="wrap-input2 validate-input" data-validate = "Introduction is required">
-					<input class="input2" type="text" name="email">
+					<input required class="input2" type="text" name="emaill">
 					<span class="focus-input2" data-placeholder="INTRODUCTION"></span>
 				</div>
 
 				<div class="wrap-input2 validate-input" data-validate = "Blog is required">
-					<textarea class="input2" name="message"></textarea>
+					<textarea required class="input2" name="message"></textarea>
 					<span class="focus-input2" data-placeholder="BLOG"></span>
 				</div>
             <div class="form-group"><button class="btn btn-primary" type="submit">Add Blog </button></div>

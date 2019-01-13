@@ -12,11 +12,11 @@ public class CreationBlogForm {
     private static final String CHAMP_DESCRIPTION    = "message";
     private static final String CHAMP_EMESSAGE    = "Emessage";
     
-    private static final String CHAMP_INTRO    = "email";
+    private static final String CHAMP_INTRO    = "emaill";
     private static final String CHAMP_EINTRO    = "Eemail";
     
     
-    private String              resultat;
+    private String  resultat;
     private Map<String, String> erreurs         = new HashMap<String, String>();
    private ImpBlog impBlog =new ImpBlog();
   
