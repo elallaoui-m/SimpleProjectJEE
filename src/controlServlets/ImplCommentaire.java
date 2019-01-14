@@ -42,14 +42,14 @@ public class ImplCommentaire implements  DAOComment  {
 
 	@Override //had fonction tatraja3 lik ga3 les commentaires dyal wahd blog 
 	public List<Commentaire> GetComments(int id_blog) {
-		javax.persistence.Query query = em.createNativeQuery("select * from Commentaire where id_blog = ? order by upvotes desc",Commentaire.class);
+		javax.persistence.Query query = em.createNativeQuery("select * from commentaire where id_blog = ? order by upvotes desc",Commentaire.class);
 		query.setParameter(1, id_blog);
 		return query.getResultList();
 	}
 
 	@Override //had fonction katraja3 lik hadok les comments li fihom dik lklma (word) had fonction atnf3kom ila drto recherch 
 	public List<Commentaire> FindCommnet(String words) {
-		javax.persistence.Query query = em.createNativeQuery("select * from Commentaire where comm like ?",Commentaire.class);
+		javax.persistence.Query query = em.createNativeQuery("select * from commentaire where comm like ?",Commentaire.class);
 		query.setParameter(1, "%"+words+"%");
 		return query.getResultList();
 	}

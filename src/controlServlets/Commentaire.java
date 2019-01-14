@@ -17,11 +17,13 @@ public class Commentaire implements Serializable {
 	@Column(name="id_commentaire")
 	private int idCommentaire;
 
+	@Column(name="comm")
 	private String comm;
 
 	@Column(name="date_comm")
 	private String dateComm;
 
+	@Column(name="upvotes")
 	private int upvotes;
 
 	@ManyToOne

@@ -11,6 +11,9 @@
 	
 %>
 
+<c:if test = "${param.rg == 'fr'}"><fmt:setLocale value = 'fr'/></c:if>
+<c:if test = "${param.rg != 'fr'}"><fmt:setLocale value = 'en'/></c:if>
+<fmt:setBundle basename = "ressources.message" />
 
 <html>
     <head>
@@ -52,7 +55,7 @@
                 <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
                     <form class="login100-form validate-form" methode='post' action="<c:url value = "/signupS"/>">
                         <span class="login100-form-title p-b-55">
-                            Registre
+                            <fmt:message key ="message.register" />
                         </span>
                         
                         <c:choose>
@@ -75,14 +78,14 @@
                         <div class="wrap-input-inline validate-input m-b-20" data-validate = "">
                             <input class="input100 input1000" type="text" name="first-name" placeholder=" ">
                                 <span class="focus-input100 ">
-                                    <label for="fullname" class="float-lable">First name</label>
+                                    <label for="fullname" class="float-lable"><fmt:message key ="message.firstName" /></label>
                                 </span>
                         </div>
                         
                         <div class="wrap-input-inline validate-input m-b-20" data-validate = "">
                             <input class="input100 input1000" type="text" name="lastname" placeholder=" ">
                                 <span class="focus-input100">
-                                    <label for="fullname" class="float-lable">Last name</label>
+                                    <label for="fullname" class="float-lable"><fmt:message key ="message.lastName" /></label>
                                 </span>
                                 
                                 
@@ -94,7 +97,7 @@
                                     <label for="fullname" class="float-lable">Email</label>
                                 </span>
                                 </div>
-                        <p class="para-email m-b-20">Use your adresse email </p>
+                        <p class="para-email m-b-20"><fmt:message key ="message.usMail" /></p>
                         
                         <div class="wrap-input100 validate-input m-b-20" data-validate = "Valid email is required: ex@gmail.com">
                             <select class="input100" name='gender' >
@@ -104,7 +107,7 @@
                            
                             </select>
                                 <span class="focus-input100">
-                                    <label for="fullname" class="float-lable">Genre</label>
+                                    <label for="fullname" class="float-lable"><fmt:message key ="message.sex" /></label>
                                 </span>
                                 
                                 
@@ -114,19 +117,19 @@
                         <div class="wrap-input100 date-30  m-r-10" data-validate = "Valid email is required: ex@gmail.com">
                             <input class="input100 date-" id="day" type="number" min="1" max="31"  name="day" placeholder=" ">
                                 <span class="focus-input100">
-                                    <label for="fullname" class="float-lable">Day</label>
+                                    <label for="fullname" class="float-lable"><fmt:message key ="message.day" /></label>
                                 </span>
                                 </div>
                         <div class="wrap-input100 date-30  m-r-10" >
                             <input class="input100 date-" id="month" type="number" min="1" max="12" name="month" placeholder=" ">
                                 <span class="focus-input100">
-                                    <label for="fullname" class="float-lable">Month</label>
+                                    <label for="fullname" class="float-lable"><fmt:message key ="message.month" /></label>
                                 </span>
                                 </div>
                         <div class="wrap-input100 date-60  " data-validate = "Valid email is required: ex@gmail.com">
                             <input class="input100 date-" id="year" type="number" name="year" placeholder=" ">
                                 <span class="focus-input100">
-                                    <label for="fullname" class="float-lable">Year</label>
+                                    <label for="fullname" class="float-lable"><fmt:message key ="message.year" /></label>
                                 </span>
                                 </div>
                         </div>

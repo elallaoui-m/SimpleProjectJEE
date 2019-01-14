@@ -29,13 +29,14 @@
 	
 	
 %>
+
+
 <%-- <%Utilisateur Myuser =(Utilisateur) request.getSession().getAttribute("user"); %> --%>
-<fmt:setLocale value = "en"/>
-<fmt:setBundle basename = "ressources.message" /> 
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html><head>
-        <title>Edit Profile</title>
+        <title><fmt:message ket="message.editProfile"/></title>
         <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
                 <!--===============================================================================================-->
@@ -73,7 +74,7 @@
                 <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
                     <form class="login100-form validate-form" methode="post"  action="<c:url value = "/EditProfileS"/>">
                         <span class="login100-form-title p-b-55">
-                            Edit Profile
+                            <fmt:message ket="message.editProfile"/>
                         </span>
                         <c:choose>
 						  <c:when test="${not empty requestScope.wrongPass && requestScope.wrongPass=='1'}">
@@ -91,14 +92,14 @@
                         <div class="wrap-input-inline validate-input m-b-20" data-validate="">
                             <input class="input100 input1000" type="text" name="firstname" placeholder=" " value=${Myuser.prenom} >
                                 <span class="focus-input100 ">
-                                    <label for="fullname" class="float-lable">First name</label>
+                                    <label for="fullname" class="float-lable"><fmt:message key="message.firstName"/></label>
                                 </span>
                         </div>
                         
                         <div class="wrap-input-inline validate-input m-b-20" data-validate="">
                             <input class="input100 input1000" type="text" name="lastname" placeholder=" " value=${Myuser.nom} >
                                 <span class="focus-input100">
-                                    <label for="fullname" class="float-lable">Last name</label>
+                                    <label for="fullname" class="float-lable"><fmt:message key="message.lastName"/></label>
                                 </span>
                                 
                                 
@@ -110,7 +111,7 @@
                                     <label for="fullname" class="float-lable">Email</label>
                                 </span>
                                 </div>
-                        <p class="para-email m-b-20">Use your adresse email </p>
+                        <p class="para-email m-b-20"><fmt:message key="message.usMail"/> </p>
                         
                         <div class="wrap-input100 validate-input m-b-20" data-validate="Valid email is required: ex@gmail.com">
                             <select class="input100" name='gender'>
@@ -124,7 +125,7 @@
                            
                             </select>
                                 <span class="focus-input100">
-                                    <label for="fullname" class="float-lable">Gender</label>
+                                    <label for="fullname" class="float-lable"><fmt:message key="message.sex"/></label>
                                 </span>
                                 
                                 
@@ -136,7 +137,7 @@
                         <div class="wrap-input100 date-31 m-r-10" data-validate="Valid email is required: ex@gmail.com">
                             <input class="input100 date-" id="day" type="date"  name="birthday" placeholder=" " value=<fmt:formatDate value="${myDate}" pattern="yyyy-MM-dd"/>>
                                 <span class="focus-input100">
-                                    <label for="fullname" class="float-lable">Birthday</label>
+                                    <label for="fullname" class="float-lable"><fmt:message key="message.birthday"/></label>
                                 </span>
                                 </div>
                         <div class="wrap-input100 date-30 m-r-10">
@@ -173,7 +174,7 @@
                             <input class="input100 pass-" type="password" id="password" name="pass" placeholder=" ">
                                
                                 <span class="focus-input100">
-                                    <label for="fullname" class="float-lable">Password</label>
+                                    <label for="fullname" class="float-lable"><fmt:message key="message.password"/></label>
                                 </span>
                                 </div>
                                 
@@ -181,7 +182,7 @@
                             <input class="input100 pass-" id="confirm" type="password" name="confirm" placeholder=" ">
                                 
                                 <span class="focus-input100">
-                                    <label for="fullname" class="float-lable">Confirm</label>
+                                    <label for="fullname" class="float-lable"><fmt:message key="message.confirm"/></label>
                                 </span>
                                 </div>
                         <span>
@@ -215,7 +216,7 @@
                         
                         <div class="container-login100-form-btn p-t-25">
                             <button class="login100-form-btn" type='submit'>
-                               Save
+                               <fmt:message key="message.save"/>
                             </button>
                         </div>
                         <div class="text-center w-full p-t-40">

@@ -17,11 +17,13 @@ public class Contact implements Serializable {
 	@Column(name="id_msg")
 	private int idMsg;
 
+	@Column(name="email")
 	private String email;
 
 	@Lob
 	private String msg;
 
+	@Column(name="name")
 	private String name;
 
 	public Contact() {

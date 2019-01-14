@@ -52,7 +52,7 @@ public class ImpBlog implements DAOBlog{
 
 	@Override
 	public List<Blog> ShowAllBlog() {	
-		javax.persistence.Query query = em.createNativeQuery("select * from Blog ",Blog.class);
+		javax.persistence.Query query = em.createNativeQuery("select * from blog ",Blog.class);
 		return query.getResultList();
 	}
 
@@ -65,7 +65,7 @@ public class ImpBlog implements DAOBlog{
 	
 	@Override
 	public List<Blog> RechercheBlog(String words) {
-		javax.persistence.Query query = em.createNativeQuery("select * from Blog where titre like ?",Blog.class);
+		javax.persistence.Query query = em.createNativeQuery("select * from blog where titre like ?",Blog.class);
 		query.setParameter(1, "%"+words+"%");
 		return query.getResultList();
 	}

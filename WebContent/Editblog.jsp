@@ -27,6 +27,10 @@
 	int l = rand.nextInt(11);
 %>
 
+<c:if test = "${param.rg == 'fr'}"><fmt:setLocale value = 'fr'/></c:if>
+<c:if test = "${param.rg != 'fr'}"><fmt:setLocale value = 'en'/></c:if>
+<fmt:setBundle basename = "ressources.message" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -571,7 +575,7 @@
     
 <div class="contact-clean">
         <form method="post" class="contact2-form validate-form" action="/SimpleProjectJEE/EditeBlogS">
-            <h2 class="text-center">Edit Blog</h2>
+            <h2 class="text-center"><fmt:message key="message.editBlog"/></h2>
 				<div class="wrap-input2 validate-input" data-validate="Titre is required">
 					<input required class="input2" type="text" name="Etitre" value="<%=myBlog.getTitre()%>">
 					<span class="focus-input2" data-placeholder="TITRE"></span>
@@ -583,7 +587,7 @@
 				</div>
 
 				<div class="wrap-input2 validate-input" data-validate = "Blog is required">
-					<textarea required class="input2" name="Emessage" value="<%=myBlog.getDescription()%>"></textarea>
+					<textarea required class="input2" name="Emessage" ><%=myBlog.getDescription()%></textarea>
 					<span class="focus-input2" data-placeholder="BLOG"></span>
 				</div>
             <div class="form-group"><button class="btn btn-primary" type="submit">Edit Blog </button></div>

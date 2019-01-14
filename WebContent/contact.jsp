@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
+
+<c:if test = "${param.rg == 'fr'}"><fmt:setLocale value = 'fr'/></c:if>
+<c:if test = "${param.rg != 'fr'}"><fmt:setLocale value = 'en'/></c:if>
+<fmt:setBundle basename = "ressources.message" /> 
     
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -29,7 +34,7 @@
 			<div class="wrap-contact2">
 				<form class="contact2-form validate-form" method="post" action='/SimpleProjectJEE/AddContact'>
 					<span class="contact2-form-title">
-						Contact Us
+						<fmt:message ket="message.contactus"  />
 					</span>
 
 					<div class="wrap-input2 validate-input" data-validate="Name is required">
@@ -51,7 +56,7 @@
 						<div class="wrap-contact2-form-btn">
 							<div class="contact2-form-bgbtn"></div>
 							<button class="contact2-form-btn">
-								Send Your Message
+								<fmt:message ket="message.envMsg"  />
 							</button>
 						</div>
 					</div>

@@ -22,10 +22,10 @@
 
 <c:if test = "${param.rg == 'fr'}"><fmt:setLocale value = 'fr'/></c:if>
 <c:if test = "${param.rg != 'fr'}"><fmt:setLocale value = 'en'/></c:if>
-
+<fmt:setBundle basename = "ressources.message" />
 
 <%-- <fmt:setLocale value = "en"/> --%>
-<fmt:setBundle basename = "ressources.message" />
+
 
 <!DOCTYPE html>
 <html lang="en"><head>
@@ -600,11 +600,11 @@
               <a href=<%="/SimpleProjectJEE/InvocBlogS?idblog="+b.getIdBlog() %> class="btn btn-primary"><fmt:message key = "message.read"/> &rarr;</a>
             </div>
             <div class="card-footer text-muted">
-              <fmt:message key = "message.posted"/> <%= b.getDateBlog() %>
+              <fmt:message key = "message.posted"/> <%= b.getDateBlog().substring(0, 10) %>
               <a><%=b.getUtilisateur().getNom() %></a>
               
               <%
-                if(b.getUtilisateur().getIdEtudiant() == ((Utilisateur)(request.getSession().getAttribute("Myuser"))).getIdEtudiant()  )
+                if(b.getUtilisateur().getIdEtudiant() == us.getIdEtudiant() || us.getType().equals("admin")  )
                 {
                 	
                 

@@ -23,6 +23,10 @@
 	int l = rand.nextInt(11);
 %>
 
+<c:if test = "${param.rg == 'fr'}"><fmt:setLocale value = 'fr'/></c:if>
+<c:if test = "${param.rg != 'fr'}"><fmt:setLocale value = 'en'/></c:if>
+<fmt:setBundle basename = "ressources.message" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -567,7 +571,7 @@
     
 <div class="contact-clean">
         <form method="post" class="contact2-form validate-form" action="/SimpleProjectJEE/CreationBlogS">
-            <h2 class="text-center">New Blog</h2>
+            <h2 class="text-center"><fmt:message key="message.newBlog"/></h2>
 				<div class="wrap-input2 validate-input" data-validate="Titre is required">
 					<input required class="input2" type="text" name="name">
 					<span class="focus-input2" data-placeholder="TITRE"></span>

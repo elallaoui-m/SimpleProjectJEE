@@ -18,22 +18,31 @@ public class Utilisateur implements Serializable {
 	@Column(name="date_n")
 	private String dateN;
 
+	@Column(name="email")
 	private String email;
 
+	@Column(name="nom")
 	private String nom;
 
+	@Column(name="prenom")
 	private String prenom;
 
+	@Column(name="type")
 	private String type;
 
+	@Column(name="verify")
 	private String verify;
 	
+	@Column(name="motdepass")
 	private String motdepass;
 	
+	@Column(name="gender")
 	private String gender;
 	
+	@Column(name="token")
 	private String token;
 
+	
 	public Utilisateur() {
 	}
 

@@ -17,14 +17,20 @@ public class Blog implements Serializable {
 
 	@Id
 	@Column(name="id_blog")
+	@SequenceGenerator( name = "mySeq", sequenceName = "MY_SEQ", allocationSize = 1, initialValue = 1 )
+	@GeneratedValue(strategy=GenerationType.IDENTITY, generator="mySeq")
 	private int idBlog;
 
 	@Column(name="date_blog")
 	private String dateBlog;
 
+	@Column(name="description")
 	private String description;
+	
+	@Column(name="intro")
 	private String intro;
 	
+	@Column(name="titre")
 	private String titre;
 
 	public String getTitre() {

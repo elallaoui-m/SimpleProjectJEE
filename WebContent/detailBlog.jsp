@@ -23,6 +23,10 @@
 	int l = rand.nextInt(11);
 %>
 
+<c:if test = "${param.rg == 'fr'}"><fmt:setLocale value = 'fr'/></c:if>
+<c:if test = "${param.rg != 'fr'}"><fmt:setLocale value = 'en'/></c:if>
+<fmt:setBundle basename = "ressources.message" />
+
 <!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="UTF-8">
@@ -589,7 +593,7 @@
                                         <hr>
                                         
                                         <!-- Comments -->
-                                        <h3>Comments</h3>
+                                        <h3><fmt:message key="message.comments"/></h3>
                                         
                                         
                                         <% for (Commentaire c : ListC) {%>
@@ -610,7 +614,7 @@
                                                     </button>
                                                     <%=c.getUpvotes() %> likes<br>
                                                     
-                                                    <% if(c.getUtilisateur().getIdEtudiant()==(idblogbyrequest)){
+                                                    <% if(c.getUtilisateur().getIdEtudiant()==(idblogbyrequest) || us.getType().equals("admin")){
                                                         out.println("<a href='/SimpleProjectJEE/HideComment?idcomment="+c.getIdCommentaire()+"&idblog="+c.getBlog().getIdBlog()+"'>Delete Comment</a>");
                                                         }
                                                         %>
@@ -632,18 +636,18 @@
                                         <hr>
                                         
                                         <!-- Comment form -->
-                                        <h3>Leave a comment</h3>
-                                        <p>Please keep in mind that comments are moderated and rel="nofollow" is in use. So, please do not use a spammy keyword or a domain as your name, or else it will be deleted. Thank you!</p>
+                                        <h3><fmt:message key="message.leavComment"/></h3>
+                                        <p><fmt:message key="message.noteComment"/></p>
                                         
                                         <div class="well">
                                             <form action="<c:url value = "/AddComment"/>" methode='post'>
                                                 
                                                 <div class="form-group">
-                                                    <label for="contactComment">Comment</label>
+                                                    <label for="contactComment"><fmt:message key="message.comment"/></label>
                                                     <textarea name=comment class="form-control" id="contactComment"></textarea>
                                                     <input hidden name='idblog' value=<%=myBlog.getIdBlog() %>>
                                                 </div>
-                                                <button type="submit" class="btn btn-default">Submit</button>
+                                                <button type="submit" class="btn btn-default"><fmt:message key="message.submit"/></button>
                                             </form>
                                         </div>
                                         <hr>
@@ -652,15 +656,15 @@
                                     <div class="col-sm-4 col-sm-pull-8">
                                         <!-- Search -->
                                         <div class="well">
-                                            <h4 class="margin-t-0">Search</h4>
+                                            <h4 class="margin-t-0"><fmt:message key="message.search"/></h4>
                                             <form action="#">
                                                 <div class="input-group">
-                                                    <label class="sr-only" for="search-form">Search the site</label>
+                                                    <label class="sr-only" for="search-form"><fmt:message key = "message.searchSite"/></label>
                                                     <input type="text" class="form-control" id="search-form">
                                                         <span class="input-group-btn">
                                                             <button class="btn btn-default" type="button">
                                                                 <span class="glyphicon glyphicon-search"></span>
-                                                                <span class="sr-only">Search</span>
+                                                                <span class="sr-only"><fmt:message key="message.search"/></span>
                                                             </button>
                                                         </span>
                                                         </div>
@@ -717,12 +721,12 @@
                                                                     <li>
                                                                         <a href="Editincription.jsp" <%if(us.getVerify().equals("yesG")) out.print("class='isDisabled'"); %>>
                                                                             <i class="glyphicon glyphicon-user"></i>
-                                                                            Account Settings </a>
+                                                                            <fmt:message key="message.accountS"/> </a>
                                                                     </li>
                                                                     <li>
                                                                         <a href="/SimpleProjectJEE/LogoutS	">
                                                                             <i class="glyphicon glyphicon-log-out"></i>
-                                                                            Disconnect </a>
+                                                                            <fmt:message key="message.logoutWord"/> </a>
                                                                     </li>
                                                                     <!-- <li>
                                                                         <a href="#" target="_blank">
