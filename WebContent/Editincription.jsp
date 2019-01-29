@@ -32,11 +32,14 @@
 
 
 <%-- <%Utilisateur Myuser =(Utilisateur) request.getSession().getAttribute("user"); %> --%>
+<c:if test = "${param.rg == 'fr'}"><fmt:setLocale value = 'fr'/></c:if>
+<c:if test = "${param.rg != 'fr'}"><fmt:setLocale value = 'en'/></c:if>
+<fmt:setBundle basename = "ressources.message" />
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html><head>
-        <title><fmt:message ket="message.editProfile"/></title>
+        <title><fmt:message key="message.editProfile"/></title>
         <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
                 <!--===============================================================================================-->
@@ -74,7 +77,7 @@
                 <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
                     <form class="login100-form validate-form" methode="post"  action="<c:url value = "/EditProfileS"/>">
                         <span class="login100-form-title p-b-55">
-                            <fmt:message ket="message.editProfile"/>
+                            <fmt:message key="message.editProfile"/>
                         </span>
                         <c:choose>
 						  <c:when test="${not empty requestScope.wrongPass && requestScope.wrongPass=='1'}">
@@ -137,7 +140,7 @@
                         <div class="wrap-input100 date-31 m-r-10" data-validate="Valid email is required: ex@gmail.com">
                             <input class="input100 date-" id="day" type="date"  name="birthday" placeholder=" " value=<fmt:formatDate value="${myDate}" pattern="yyyy-MM-dd"/>>
                                 <span class="focus-input100">
-                                    <label for="fullname" class="float-lable"><fmt:message key="message.birthday"/></label>
+                                    <label for="fullname" class="float-lable"><fmt:message key="message.birthDay"/></label>
                                 </span>
                                 </div>
                         <div class="wrap-input100 date-30 m-r-10">

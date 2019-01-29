@@ -590,6 +590,7 @@
 					<textarea required class="input2" name="Emessage" ><%=myBlog.getDescription()%></textarea>
 					<span class="focus-input2" data-placeholder="BLOG"></span>
 				</div>
+				<input type="hidden" name="BlogId" value="<%=myBlog.getIdBlog()%>" >
             <div class="form-group"><button class="btn btn-primary" type="submit">Edit Blog </button></div>
         </form>
     </div>
